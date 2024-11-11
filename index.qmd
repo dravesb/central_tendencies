@@ -1,0 +1,11 @@
+---
+title: "Welcome to Central Tendencies"
+---
+![](images/dist_shift.png){fig-align="center"}
+
+Welcome to my blog - Central Tendencies. 
+My name is [Benjamin Draves](about.qmd) and I'm a [Senior Applied Scientist at Uber](https://www.linkedin.com/in/benjamin-draves-347893167) in NYC. 
+I work on building recommendation and targeting machine learning systems to grow Uber's consumer and earner businesses.
+I received my [Ph.D. in Statistics](https://hdl.handle.net/2144/45235) from Boston University and a B.S. in Mathematics from Lafayette College. 
+The purpose of Central Tendencies is to share what I am [reading](reading/reading_scroll.qmd), [thinking about](thinking_about/thinking_about_scroll.qmd), and [working on](working_on/working_on_scroll.qmd) in hope of starting conversations with fellow statisticians and data scientists. 
+ 

@@ -1,0 +1,8 @@
+---
+title: "Working On"
+listing: 
+    contents: working_on_posts
+    sort: "date"
+    categories: true 
+    feed: true
+---

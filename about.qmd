@@ -1,0 +1,29 @@
+---
+title: "About Me"
+---
+
+My name is Benjamin Draves and I'm a Senior Applied Scientist at Uber in NYC. 
+I work in our marketing science organization building [recommendation and targeting machine learning systems](https://www.uber.com/blog/personalized-marketing-at-scale/?uclick_id=b3393989-abf6-452d-8aca-82b420fbb385) to grow Uber's consumer and earner business. 
+
+![](images/me.jpeg){fig-align="center"}
+
+Before Uber, I received my Ph.D. in Statistics from Boston University and wrote my [dissertation on spectral embedding methods for multiple network data](https://hdl.handle.net/2144/45235) and continue to study network science and matrix analysis methods. 
+Outside of work, I enjoy distance running, soccer, reading, and exploring NYC. 
+
+## Data Science Topics that Excite Me
+
+* Recommendation Systems 
+* Causal Machine Learning 
+* Graph Embeddings and Network Inference
+* Statistical Pedagogy 
+
+
+## Experiences & Education
+
+* [2022-Present] Applied Scientist @ Uber 
+* [2017-2022] Ph.D. | M.A. in Stat @ Boston University
+* [2014-2017] B.S. in Math @ Lafayette College
+
+## Contact Information
+
+If you wish to discuss what I'm working on please feel free to email me at [benjamin.draves@gmail.com](benjamin.draves@gmail.com). 

@@ -1,0 +1,406 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to Central Tendencies",
+    "section": "",
+    "text": "Welcome to my blog - Central Tendencies. My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I received my Ph.D. in Statistics from Boston University and a B.S. in Mathematics from Lafayette College. The purpose of Central Tendencies is to share what I am reading, thinking about, and working on in hope of starting conversations with fellow statisticians and data scientists."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome - Blog Goals",
+    "section": "",
+    "text": "This is a test.\n\\[ \\mu = \\int_{-\\infty}^{\\infty}xdF(x)\\]"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work in our marketing science organization building recommendation and targeting machine learning systems to grow Uber’s consumer and earner business.\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, and exploring NYC."
+  },
+  {
+    "objectID": "about.html#about-me",
+    "href": "about.html#about-me",
+    "title": "About Me",
+    "section": "",
+    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work in our marketing science organization building recommendation and targeting machine learning systems to grow Uber’s consumer and earner business.\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, and exploring NYC."
+  },
+  {
+    "objectID": "about.html#experiences-education",
+    "href": "about.html#experiences-education",
+    "title": "About Me",
+    "section": "Experiences & Education",
+    "text": "Experiences & Education\n\n[2022-Present] Applied Scientist @ Uber\n[2017-2022] Ph.D. | M.A. in Stat @ Boston University\n[2014-2017] B.S. in Math @ Lafayette College"
+  },
+  {
+    "objectID": "about.html#data-science-topics-that-excite-me",
+    "href": "about.html#data-science-topics-that-excite-me",
+    "title": "About Me",
+    "section": "Data Science Topics that Excite Me",
+    "text": "Data Science Topics that Excite Me\n\nRecommendation Systems\nCausal Machine Learning\nGraph Embeddings and Network Inference\nStatistical Pedagogy"
+  },
+  {
+    "objectID": "about.html#contact-information",
+    "href": "about.html#contact-information",
+    "title": "About Me",
+    "section": "Contact Information",
+    "text": "Contact Information\nIf you wish to discuss what I’m working on please feel free to email me at benjamin.draves@gmail.com."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "",
+    "section": "",
+    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work in our marketing science organization building recommendation and targeting machine learning systems to grow Uber’s consumer and earner business.\n\n\n\n\n\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, and exploring NYC."
+  },
+  {
+    "objectID": "index.html#experiences-education",
+    "href": "index.html#experiences-education",
+    "title": "",
+    "section": "Experiences & Education",
+    "text": "Experiences & Education\n\n[2022-2024] Applied Scientist @ Uber\n[2017-2022] Ph.D. | M.A. in Stat @ Boston University\n[2014-2017] B.S. in Math @ Lafayette College"
+  },
+  {
+    "objectID": "index.html#data-science-topics-that-excite-me",
+    "href": "index.html#data-science-topics-that-excite-me",
+    "title": "Welcome",
+    "section": "Data Science Topics that Excite Me",
+    "text": "Data Science Topics that Excite Me\n\nStatistics\nMachine Learning\nStatistical Pedagogy"
+  },
+  {
+    "objectID": "index.html#contact-information",
+    "href": "index.html#contact-information",
+    "title": "",
+    "section": "Contact Information",
+    "text": "Contact Information\nIf you wish to discuss what I’m working on please feel free to email me at benjamin.draves@gmail.com."
+  },
+  {
+    "objectID": "blog_goals.html",
+    "href": "blog_goals.html",
+    "title": "About Me",
+    "section": "",
+    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work in our marketing science organization building recommendation and targeting machine learning systems to grow Uber’s consumer and earner business.\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, and exploring NYC.",
+    "crumbs": [
+      "Home",
+      "Blog Goals"
+    ]
+  },
+  {
+    "objectID": "blog_goals.html#about-me",
+    "href": "blog_goals.html#about-me",
+    "title": "About Me",
+    "section": "",
+    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work in our marketing science organization building recommendation and targeting machine learning systems to grow Uber’s consumer and earner business.\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, and exploring NYC.",
+    "crumbs": [
+      "Home",
+      "Blog Goals"
+    ]
+  },
+  {
+    "objectID": "blog_goals.html#experiences-education",
+    "href": "blog_goals.html#experiences-education",
+    "title": "About Me",
+    "section": "Experiences & Education",
+    "text": "Experiences & Education\n\n[2022-2024] Applied Scientist @ Uber\n[2017-2022] Ph.D./M.A. in Stat @ Boston University\n[2014-2017] B.S. in Math @ Lafayette College",
+    "crumbs": [
+      "Home",
+      "Blog Goals"
+    ]
+  },
+  {
+    "objectID": "blog_goals.html#data-science-topics-that-excite-me",
+    "href": "blog_goals.html#data-science-topics-that-excite-me",
+    "title": "About Me",
+    "section": "Data Science Topics that Excite Me",
+    "text": "Data Science Topics that Excite Me\n\nRecommendation systems\nCausal machine learning\nStatistical properities of graph embeddings\nStatistics pedagocy in non-academic settings",
+    "crumbs": [
+      "Home",
+      "Blog Goals"
+    ]
+  },
+  {
+    "objectID": "blog_goals.html#contact-information",
+    "href": "blog_goals.html#contact-information",
+    "title": "About Me",
+    "section": "Contact Information",
+    "text": "Contact Information\nIf you wish to discuss what I’m working on please feel free to email me at benjamin.draves@gmail.com.",
+    "crumbs": [
+      "Home",
+      "Blog Goals"
+    ]
+  },
+  {
+    "objectID": "index.html#homepage",
+    "href": "index.html#homepage",
+    "title": "About Me",
+    "section": "",
+    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work in our marketing science organization building recommendation and targeting machine learning systems to grow Uber’s consumer and earner business.\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, and exploring NYC.",
+    "crumbs": [
+      "Statistical Basics",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Central Tendancies",
+    "section": "",
+    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work in our marketing science organization building recommendation and targeting machine learning systems to grow Uber’s consumer and earner business.\n\n\n\n\n\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, and exploring NYC."
+  },
+  {
+    "objectID": "index.html#motivation",
+    "href": "index.html#motivation",
+    "title": "Welcome",
+    "section": "",
+    "text": "Hello! My name is be"
+  },
+  {
+    "objectID": "index.html#organization",
+    "href": "index.html#organization",
+    "title": "Welcome",
+    "section": "Organization",
+    "text": "Organization"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Welcome - Blog Goals\n\n\n\n\n\n\nmeta\n\n\n\n\n\n\n\n\n\nAug 13, 2024\n\n\nBenjamin Draves\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "sidebar/reading_list.html",
+    "href": "sidebar/reading_list.html",
+    "title": "Reading List",
+    "section": "",
+    "text": "Date\ntests\ntest",
+    "crumbs": [
+      "Home",
+      "Reading List"
+    ]
+  },
+  {
+    "objectID": "sidebar/reading_list.html#up-next",
+    "href": "sidebar/reading_list.html#up-next",
+    "title": "Reading List",
+    "section": "Up Next",
+    "text": "Up Next",
+    "crumbs": [
+      "Home",
+      "Reading List"
+    ]
+  },
+  {
+    "objectID": "sidebar/reading_list.html#past",
+    "href": "sidebar/reading_list.html#past",
+    "title": "Reading List",
+    "section": "Past",
+    "text": "Past\n\n\n\nDate\ntests\ntest",
+    "crumbs": [
+      "Home",
+      "Reading List"
+    ]
+  },
+  {
+    "objectID": "reading_list.html#up-next",
+    "href": "reading_list.html#up-next",
+    "title": "Reading List",
+    "section": "Up Next",
+    "text": "Up Next"
+  },
+  {
+    "objectID": "reading_list.html#past",
+    "href": "reading_list.html#past",
+    "title": "Reading List",
+    "section": "Past",
+    "text": "Past\n\n\n\nDate\ntests\ntest"
+  },
+  {
+    "objectID": "index.html#data-sceince-topics-that-excite-me",
+    "href": "index.html#data-sceince-topics-that-excite-me",
+    "title": "Welcome",
+    "section": "Data Sceince Topics that Excite Me",
+    "text": "Data Sceince Topics that Excite Me\nThe purpose for Central Tendancies is to share what I am reading, working on, and thinking about. My interests vary but mainly center around three areas:\n\napplied and theoretical statistics\nmachine learning\nstatistical pedagogy\n\nMy hope is this project serve to educate myself and others in these areas where"
+  },
+  {
+    "objectID": "index.html#central-tendancies",
+    "href": "index.html#central-tendancies",
+    "title": "Central Tendancies",
+    "section": "Central Tendancies",
+    "text": "Central Tendancies\nThe purpose for Central Tendancies is to share what I am reading, working on, and thinking about. My interests vary but center around:\n\napplied and theoretical statistics\nmachine learning\nstatistical pedagogy\n\nMy goal for this project is to document and share my learnings with the hope of starting conversations with fellow statisticians and data scientists."
+  },
+  {
+    "objectID": "reading_list.html",
+    "href": "reading_list.html",
+    "title": "Reading List",
+    "section": "",
+    "text": "Welcome - Blog Goals\n\n\n\n\n\n\nmeta\n\n\n\n\n\n\n\n\n\nAug 13, 2024\n\n\nBenjamin Draves\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Home",
+      "Reading List"
+    ]
+  },
+  {
+    "objectID": "sidebar/blog/reading_list.html#up-next",
+    "href": "sidebar/blog/reading_list.html#up-next",
+    "title": "Reading List",
+    "section": "Up Next",
+    "text": "Up Next"
+  },
+  {
+    "objectID": "sidebar/blog/reading_list.html#past",
+    "href": "sidebar/blog/reading_list.html#past",
+    "title": "Reading List",
+    "section": "Past",
+    "text": "Past\n\n\n\nDate\ntests\ntest"
+  },
+  {
+    "objectID": "blog/reading_notes/reading_notes.html",
+    "href": "blog/reading_notes/reading_notes.html",
+    "title": "Reading Notes",
+    "section": "",
+    "text": "Welcome - Blog Goals\n\n\n\n\n\n\nmeta\n\n\n\n\n\n\n\n\n\nAug 13, 2024\n\n\nBenjamin Draves\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/blog.html",
+    "href": "blog/blog.html",
+    "title": "Welcome to Central Tendencies",
+    "section": "",
+    "text": "Welcome to my blog - Central Tendencies. The purpose of this blog is to share what I am reading, thinking about, and working on. My interests center around applied and theoretical statistics, machine learning, and statistical pedagogy. See below to see about what I am currently up to."
+  },
+  {
+    "objectID": "blog/blog/blog_scroll.html",
+    "href": "blog/blog/blog_scroll.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Welcome - Blog Goals\n\n\n\n\n\n\nmeta\n\n\n\n\n\n\n\n\n\nAug 13, 2024\n\n\nBenjamin Draves\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/projects/project_posts/welcome/index.html",
+    "href": "blog/projects/project_posts/welcome/index.html",
+    "title": "Welcome - Blog Goals",
+    "section": "",
+    "text": "This is a test.\n\\[ \\mu = \\int_{-\\infty}^{\\infty}xdF(x)\\]"
+  },
+  {
+    "objectID": "blog/projects/project_scroll.html",
+    "href": "blog/projects/project_scroll.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Welcome - Blog Goals\n\n\n\n\n\n\nmeta\n\n\n\n\n\n\n\n\n\nAug 13, 2024\n\n\nBenjamin Draves\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/blog/blog_posts/welcome/index.html",
+    "href": "blog/blog/blog_posts/welcome/index.html",
+    "title": "Welcome - Blog Goals",
+    "section": "",
+    "text": "This is a test.\n\\[ \\mu = \\int_{-\\infty}^{\\infty}xdF(x)\\]"
+  },
+  {
+    "objectID": "blog/reading_notes/reading_posts/welcome/index.html",
+    "href": "blog/reading_notes/reading_posts/welcome/index.html",
+    "title": "Welcome - Blog Goals",
+    "section": "",
+    "text": "This is a test.\n\\[ \\mu = \\int_{-\\infty}^{\\infty}xdF(x)\\]"
+  },
+  {
+    "objectID": "about.html#languages",
+    "href": "about.html#languages",
+    "title": "About Me",
+    "section": "Languages",
+    "text": "Languages\n\nPython, R, SQL, PySpark"
+  },
+  {
+    "objectID": "about.html#technical-proficiencies",
+    "href": "about.html#technical-proficiencies",
+    "title": "About Me",
+    "section": "Technical Proficiencies",
+    "text": "Technical Proficiencies\n\nMachine Learning\n\nRecommendation Systems\nCausal Inference\nTabular Machine Learning\nGraph Machine Learning\n\n\n\nLanguages & Frameworks\n\nPython, R, SQL, PySpark, git, bash"
+  },
+  {
+    "objectID": "blog/reading_notes/reading_scroll.html",
+    "href": "blog/reading_notes/reading_scroll.html",
+    "title": "Reading Notes",
+    "section": "",
+    "text": "Welcome - Blog Goals\n\n\n\n\n\n\nmeta\n\n\n\n\n\n\n\n\n\nAug 13, 2024\n\n\nBenjamin Draves\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/blog.html#current-projects",
+    "href": "blog/blog.html#current-projects",
+    "title": "Welcome to Central Tendencies",
+    "section": "Current Projects",
+    "text": "Current Projects\n\nReading\n\n\n\n\n\nI am currently reading The Data Detective: Ten Easy Rules to Make Sense of Statistics by Tim Harford. Tim Harford is a well known economist and journalist who is excellent at finding and highlighting examples of common statistical misconceptions and pitfalls. I picked up this book because I knew it was likely chucked full of interesting examples of common statistical fallacies that are always useful for an applied statistician.\n\n\nThinking About\n\n\nWorking On"
+  },
+  {
+    "objectID": "blog/blog.html#past-projects",
+    "href": "blog/blog.html#past-projects",
+    "title": "Blog",
+    "section": "Past Projects",
+    "text": "Past Projects"
+  },
+  {
+    "objectID": "blog/reading/reading_scroll.html",
+    "href": "blog/reading/reading_scroll.html",
+    "title": "Reading",
+    "section": "",
+    "text": "The Data Detective\n\n\n\n\n\n\nnovel\n\n\n\n\n\n\n\n\n\nAug 13, 2024\n\n\nBenjamin Draves\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/working_on/working_on_posts/welcome/index.html",
+    "href": "blog/working_on/working_on_posts/welcome/index.html",
+    "title": "Welcome - Blog Goals",
+    "section": "",
+    "text": "This is a test.\n\\[ \\mu = \\int_{-\\infty}^{\\infty}xdF(x)\\]"
+  },
+  {
+    "objectID": "blog/thinking_about/thinking_about_posts/welcome/index.html",
+    "href": "blog/thinking_about/thinking_about_posts/welcome/index.html",
+    "title": "Welcome - Blog Goals",
+    "section": "",
+    "text": "This is a test.\n\\[ \\mu = \\int_{-\\infty}^{\\infty}xdF(x)\\]"
+  },
+  {
+    "objectID": "blog/reading/reading_posts/welcome/index.html",
+    "href": "blog/reading/reading_posts/welcome/index.html",
+    "title": "Welcome - Blog Goals",
+    "section": "",
+    "text": "This is a test.\n\\[ \\mu = \\int_{-\\infty}^{\\infty}xdF(x)\\]"
+  },
+  {
+    "objectID": "blog/thinking_about/thinking_about_scroll.html",
+    "href": "blog/thinking_about/thinking_about_scroll.html",
+    "title": "Thinking About",
+    "section": "",
+    "text": "Welcome - Blog Goals\n\n\n\n\n\n\nmeta\n\n\n\n\n\n\n\n\n\nAug 13, 2024\n\n\nBenjamin Draves\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/working_on/working_on_scroll.html",
+    "href": "blog/working_on/working_on_scroll.html",
+    "title": "Working On",
+    "section": "",
+    "text": "Welcome - Blog Goals\n\n\n\n\n\n\nmeta\n\n\n\n\n\n\n\n\n\nAug 13, 2024\n\n\nBenjamin Draves\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#central-tendencies",
+    "href": "index.html#central-tendencies",
+    "title": "",
+    "section": "Central Tendencies",
+    "text": "Central Tendencies\n\n\n\n\n\nI maintain an active blog - Central Tendencies. The purpose of this blog is to share what I am reading, thinking about, and working on."
+  },
+  {
+    "objectID": "blog/blog.html#what-i-am-currently",
+    "href": "blog/blog.html#what-i-am-currently",
+    "title": "Welcome to Central Tendencies",
+    "section": "What I am currently…",
+    "text": "What I am currently…\n\nReading\n\n\n\n\n\nI am currently reading The Data Detective: Ten Easy Rules to Make Sense of Statistics by Tim Harford. Tim Harford is a well known economist and journalist who is excellent at finding and highlighting examples of common statistical misconceptions and pitfalls. I picked up this book because I knew it was likely chucked full of interesting examples of common statistical fallacies that are always useful for an applied statistician.\n\n\nThinking About\nI am currently thinking about the\nI am thinking a lot about the history of statistics and how it intersects with how we teach statistics.\n\n\nWorking On"
+  }
+]

@@ -1,0 +1,23 @@
+---
+title: "Welcome to Central Tendencies"
+---
+![](../images/dist_shift.png){fig-align="center" fig-width=4 fig-height=0.25}
+
+Welcome to my blog - Central Tendencies. 
+The purpose of this blog is to share what I am [reading](reading/reading_scroll.qmd) and [working on](working_on/working_on_scroll.qmd). 
+My interests center around machine learning (recommendation systems, causal machine learning), applied and theoretical statistics, and statistical pedagogy. 
+See below to see about what I am currently up to.
+
+## What I am currently...
+
+### [Reading](reading/reading_scroll.qmd)
+
+
+
+
+### [Working On](working_on/working_on_scroll.qmd)
+
+
+
+
+

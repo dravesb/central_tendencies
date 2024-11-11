@@ -1,0 +1,36 @@
+project:
+  type: website
+  title: 'Central Tendencies'
+
+website:
+  title: "Central Tendencies"
+  site-url: dravesb.github.io
+  navbar: 
+    background: primary
+    left: 
+
+      - href: index.qmd
+        text: Home
+      - href: blog/blog.qmd
+        text: Blog
+      - href: about.qmd
+        text: About Me
+    right: 
+      - icon: github
+        href: https://github.com/dravesb
+      - icon: linkedin
+        href: https://www.linkedin.com/in/benjamin-draves-347893167
+      - icon: strava 
+        href: https://www.strava.com/athletes/19369962
+      - icon: book
+        href: https://www.goodreads.com/user/show/62018665-benjamin-draves
+
+format:
+  html:
+    theme: journal
+    css: styles.css
+    toc: true
+
+callout-appearance: simple
+
+

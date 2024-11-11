@@ -1,0 +1,8 @@
+---
+title: "Reading"
+listing: 
+    contents: reading_posts
+    sort: "date"
+    categories: true 
+    feed: true
+---

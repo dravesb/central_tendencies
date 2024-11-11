@@ -1,0 +1,101 @@
+{
+  "index.qmd": {
+    "index.html": "e8d3857a"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "d2269dcc"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "c1cfaf83"
+  },
+  "about.qmd": {
+    "about.html": "00fef1e1"
+  },
+  "reading_list.qmd": {
+    "reading_list.html": "3adb5877"
+  },
+  "blog_goals.qmd": {
+    "blog_goals.html": "983ae6e0"
+  },
+  "blog.qmd": {
+    "blog.html": "8a828453"
+  },
+  "sidebar/blog_statistics.qmd": {
+    "blog_statistics.html": "42995066"
+  },
+  "sidebar/blog_ml.qmd": {
+    "blog_ml.html": "079a1b05"
+  },
+  "sidebar/blog_pedagogy.qmd": {
+    "blog_pedagogy.html": "c5395954"
+  },
+  "sidebar/reading_list.qmd": {
+    "reading_list.html": "801a9ecc"
+  },
+  "sidebar/projects/projects_ds_dag.qmd": {
+    "projects_ds_dag.html": "33ca5d86"
+  },
+  "sidebar/blog/blog_ml.qmd": {
+    "blog_ml.html": "e23f68fd"
+  },
+  "sidebar/blog/blog_statistics.qmd": {
+    "blog_statistics.html": "5a7ad58c"
+  },
+  "sidebar/blog/blog_pedagogy.qmd": {
+    "blog_pedagogy.html": "c2528daf"
+  },
+  "projects.qmd": {
+    "projects.html": "57005210"
+  },
+  "sidebar/blog/reading_list.qmd": {
+    "reading_list.html": "ac1d51a7"
+  },
+  "sidebar/projects/projects.qmd": {
+    "projects.html": "f53b5800"
+  },
+  "blog/blog.qmd": {
+    "blog.html": "8d41f290"
+  },
+  "blog/reading_notes/reading_notes.qmd": {
+    "reading_notes.html": "57cf4780"
+  },
+  "blog/projects/project_scroll.qmd": {
+    "project_scroll.html": "85b6f654"
+  },
+  "blog/projects/project_posts/welcome/index.qmd": {
+    "index.html": "0d6203a6"
+  },
+  "blog/blog/blog_posts/welcome/index.qmd": {
+    "index.html": "6aeeafe6"
+  },
+  "blog/blog/blog_scroll.qmd": {
+    "blog_scroll.html": "d90e4733"
+  },
+  "blog/reading_notes/reading_posts/welcome/index.qmd": {
+    "index.html": "5abe1f81"
+  },
+  "blog/reading_notes/reading_scroll.qmd": {
+    "reading_scroll.html": "216dd475"
+  },
+  "blog/reading/reading_scroll.qmd": {
+    "reading_scroll.html": "a968301f"
+  },
+  "blog/reading/reading_posts/welcome/index.qmd": {
+    "index.html": "9b77a58f"
+  },
+  "blog/thinking_about/thinking_about_posts/welcome/index.qmd": {
+    "index.html": "f7889d67"
+  },
+  "blog/thinking_about/thinking_about_scroll.qmd": {
+    "thinking_about_scroll.html": "83327118"
+  },
+  "blog/working_on/working_on_posts/welcome/index.qmd": {
+    "index.html": "34be9bf7"
+  },
+  "blog/working_on/working_on_scroll.qmd": {
+    "working_on_scroll.html": "813b4899"
+  },
+  "blog/reading/reading_posts/the_data_detective/index.qmd": {
+    "index.html": "520fda67"
+  }
+}

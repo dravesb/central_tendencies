@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work in our marketing science organization building recommendation and targeting machine learning systems to grow Uber’s consumer and earner business.\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, reading, and exploring NYC."
+  },
+  {
+    "objectID": "about.html#data-science-topics-that-excite-me",
+    "href": "about.html#data-science-topics-that-excite-me",
+    "title": "About Me",
+    "section": "Data Science Topics that Excite Me",
+    "text": "Data Science Topics that Excite Me\n\nRecommendation Systems\nCausal Machine Learning\nGraph Embeddings and Network Inference\nStatistical Pedagogy"
+  },
+  {
+    "objectID": "about.html#experiences-education",
+    "href": "about.html#experiences-education",
+    "title": "About Me",
+    "section": "Experiences & Education",
+    "text": "Experiences & Education\n\n[2022-Present] Applied Scientist @ Uber\n[2017-2022] Ph.D. | M.A. in Stat @ Boston University\n[2014-2017] B.S. in Math @ Lafayette College"
+  },
+  {
+    "objectID": "about.html#contact-information",
+    "href": "about.html#contact-information",
+    "title": "About Me",
+    "section": "Contact Information",
+    "text": "Contact Information\nIf you wish to discuss what I’m working on please feel free to email me at benjamin.draves@gmail.com."
+  },
+  {
+    "objectID": "blog/working_on/working_on_scroll.html",
+    "href": "blog/working_on/working_on_scroll.html",
+    "title": "Working On",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "blog/reading/reading_scroll.html",
+    "href": "blog/reading/reading_scroll.html",
+    "title": "Reading",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to Central Tendencies",
+    "section": "",
+    "text": "Welcome to my blog - Central Tendencies. My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work on building recommendation and targeting machine learning systems to grow Uber’s consumer and earner businesses. I received my Ph.D. in Statistics from Boston University and a B.S. in Mathematics from Lafayette College. The purpose of Central Tendencies is to share what I am reading and working on in hope of starting conversations with fellow statisticians and data scientists."
+  },
+  {
+    "objectID": "blog/thinking_about/thinking_about_scroll.html",
+    "href": "blog/thinking_about/thinking_about_scroll.html",
+    "title": "Thinking About",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "blog/blog.html",
+    "href": "blog/blog.html",
+    "title": "Welcome to Central Tendencies",
+    "section": "",
+    "text": "Welcome to my blog - Central Tendencies. The purpose of this blog is to share what I am reading and working on. My interests center around machine learning (recommendation systems, causal machine learning), applied and theoretical statistics, and statistical pedagogy. See below to see about what I am currently up to."
+  },
+  {
+    "objectID": "blog/blog.html#what-i-am-currently",
+    "href": "blog/blog.html#what-i-am-currently",
+    "title": "Welcome to Central Tendencies",
+    "section": "What I am currently…",
+    "text": "What I am currently…\n\nReading\n\n\nWorking On"
+  }
+]

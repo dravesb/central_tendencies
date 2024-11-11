@@ -97,5 +97,8 @@
   },
   "blog/reading/reading_posts/the_data_detective/index.qmd": {
     "index.html": "520fda67"
+  },
+  "blog/reading/reading_posts/ml_with_pytorch_chp11/index.qmd": {
+    "index.html": "069b8d4c"
   }
 }

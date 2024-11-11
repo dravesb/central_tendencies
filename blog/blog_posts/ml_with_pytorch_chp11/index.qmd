@@ -1,0 +1,39 @@
+---
+title: "ML with PyTorch & Scikit-Learn: Chapter 11"
+description: "Implementing a Multilayer Artifical Neural Network from Scratch"
+author:
+  - name: Benjamin Draves
+date: 11-11-2024
+categories: [machine-learning, deep-learning] # self-defined categories
+#image: preview-image.png
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+format:
+  html:
+    code-fold: true
+jupyter: python3
+
+For a demonstration of a line plot on a polar axis, see @fig-polar.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+
+
+$$
+\mathbb{E}[x] = \int_{0}^{\infty} xf(x)dx
+$$

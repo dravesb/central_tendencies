@@ -8,6 +8,10 @@
     ],
     "blog/working_on/working_on_scroll.qmd": [
       "working_on_posts"
+    ],
+    "blog/blog.qmd": [
+      "reading_posts",
+      "blog_posts"
     ]
   }
 }

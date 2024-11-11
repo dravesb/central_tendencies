@@ -1,8 +1,0 @@
----
-title: "Thinking About"
-listing: 
-    contents: thinking_about_posts
-    sort: "date"
-    categories: true 
-    feed: true
----

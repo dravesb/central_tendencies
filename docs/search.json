@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work in our marketing science organization building recommendation and targeting machine learning systems to grow Uber’s consumer and earner business.\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, reading, and exploring NYC."
+    "text": "My name is Benjamin Draves and I’m a Senior Applied Scientist at Uber in NYC. I work on building recommendation and targeting machine learning systems to grow Uber’s consumer and earner businesses.\nBefore Uber, I received my Ph.D. in Statistics from Boston University and wrote my dissertation on spectral embedding methods for multiple network data and continue to study network science and matrix analysis methods. Outside of work, I enjoy distance running, soccer, reading, and exploring NYC."
   },
   {
     "objectID": "about.html#data-science-topics-that-excite-me",
@@ -39,7 +39,7 @@
     "href": "blog/reading/reading_scroll.html",
     "title": "Reading",
     "section": "",
-    "text": "No matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 11, 2024\n\n\nML with PyTorch & Scikit-Learn: Chapter 11\n\n\nBenjamin Draves\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -60,13 +60,41 @@
     "href": "blog/blog.html",
     "title": "Welcome to Central Tendencies",
     "section": "",
-    "text": "Welcome to my blog - Central Tendencies. The purpose of this blog is to share what I am reading and working on. My interests center around machine learning (recommendation systems, causal machine learning), applied and theoretical statistics, and statistical pedagogy. See below to see about what I am currently up to."
+    "text": "Welcome to my blog - Central Tendencies. The purpose of this blog is to share what I am reading and working on. My interests center around machine learning (recommendation systems, causal machine learning), applied and theoretical statistics, and statistical pedagogy and I tend to write mostly about these topics.\n\n\n\n\n\nI’m currently working my way through Machine Learning with PyTorch and Scikit-Learn by Raschka, Lui, and Mirjalili to become more comfortable with PyTorch for multi-output models and GNNs for recommender applications. You can find my notes below.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 11, 2024\n\n\nML with PyTorch & Scikit-Learn: Chapter 11\n\n\nBenjamin Draves\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/blog.html#what-i-am-currently",
     "href": "blog/blog.html#what-i-am-currently",
     "title": "Welcome to Central Tendencies",
     "section": "What I am currently…",
-    "text": "What I am currently…\n\nReading\n\n\nWorking On"
+    "text": "What I am currently…\n\nReading\nI’m currently working my way through Machine Learning with PyTorch and Scikit-Learn by Raschka, Lui, and Mirjalili to become more comfortable with (i) PyTorch for multi-output models and (ii) GNNs for recommender applications. You can find my notes here.\n\n\n\n\n\n\n\nWorking On"
+  },
+  {
+    "objectID": "blog/blog.html#what-i-was",
+    "href": "blog/blog.html#what-i-was",
+    "title": "Welcome to Central Tendencies",
+    "section": "What I was …",
+    "text": "What I was …\n\nReading\n\n\nWorking on"
+  },
+  {
+    "objectID": "blog/reading/reading_posts/ml_with_pytorch_chp11/index.html",
+    "href": "blog/reading/reading_posts/ml_with_pytorch_chp11/index.html",
+    "title": "ML with PyTorch & Scikit-Learn: Chapter 11",
+    "section": "",
+    "text": "\\[\n\\mathbb{E}[x] = \\int_{0}^{\\infty} xf(x)dx\n\\]"
+  },
+  {
+    "objectID": "blog/blog.html#what-i-am-currently-working-on",
+    "href": "blog/blog.html#what-i-am-currently-working-on",
+    "title": "Welcome to Central Tendencies",
+    "section": "What I am currently working on…",
+    "text": "What I am currently working on…\nI’m currently working my way through Machine Learning with PyTorch and Scikit-Learn by Raschka, Lui, and Mirjalili to become more comfortable with (i) PyTorch for multi-output models and (ii) GNNs for recommender applications. You can find my notes here."
+  },
+  {
+    "objectID": "blog/blog.html#what-i-was-working-on",
+    "href": "blog/blog.html#what-i-was-working-on",
+    "title": "Welcome to Central Tendencies",
+    "section": "What I was working on…",
+    "text": "What I was working on…\nYou can find what I was working on here."
   }
 ]

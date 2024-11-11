@@ -1,9 +1,0 @@
----
-title: "The Data Detective"
-author: "Benjamin Draves"
-date: "2024-08-13"
-categories: [novel]
-image: "data_detective.jpeg"
-draft: true
----
-

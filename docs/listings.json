@@ -5,10 +5,18 @@
   },
   {
     "listing": "/blog/reading/reading_scroll.html",
-    "items": []
+    "items": [
+      "/blog/reading/reading_posts/ml_with_pytorch_chp11/index.html"
+    ]
   },
   {
     "listing": "/blog/thinking_about/thinking_about_scroll.html",
     "items": []
+  },
+  {
+    "listing": "/blog/blog.html",
+    "items": [
+      "/blog/blog_posts/ml_with_pytorch_chp11/index.html"
+    ]
   }
 ]

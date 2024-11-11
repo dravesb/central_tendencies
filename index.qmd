@@ -7,7 +7,7 @@ Welcome to my blog - Central Tendencies.
 My name is [Benjamin Draves](about.qmd) and I'm a [Senior Applied Scientist at Uber](https://www.linkedin.com/in/benjamin-draves-347893167) in NYC. 
 I'm interested in recommendation systems, causal machine learning, and statistics and tend to write about these topics. 
 The purpose of Central Tendencies is to [share what I am reading about and working on](blog/blog.qmd) in hope of starting conversations with fellow data scientists and statisticians. 
-If you wish to discuss what I'm working on, please feel free to reach out at [benjamin.draves@gmail.com](benjamin.draves@gmail.com). 
+If you wish to discuss what I'm working on, please feel free to reach out at [benjamin.draves@gmail.com]{style="text-decoration: underline;"}. 
 
 
 

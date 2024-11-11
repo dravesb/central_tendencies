@@ -12,6 +12,13 @@
     "blog/blog.qmd": [
       "reading_posts",
       "blog_posts"
+    ],
+    "index.qmd": [
+      "blog_posts",
+      "blog/blog_posts"
+    ],
+    "blog.qmd": [
+      "blog_posts"
     ]
   }
 }

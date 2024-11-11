@@ -18,5 +18,15 @@
     "items": [
       "/blog/blog_posts/ml_with_pytorch_chp11/index.html"
     ]
+  },
+  {
+    "listing": "/index.html",
+    "items": []
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog_posts/ml_with_pytorch_chp11/index.html"
+    ]
   }
 ]

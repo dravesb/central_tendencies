@@ -4,13 +4,13 @@ description: "Implementing a Multilayer Artifical Neural Network from Scratch"
 author:
   - name: Benjamin Draves
 date: 11-11-2024
-categories: [machine-learning, deep-learning] # self-defined categories
-#image: preview-image.png
-draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+categories: [machine-learning, deep-learning, book-notes] # self-defined categories
+draft: false 
 format:
   html:
     code-fold: true
 jupyter: python3
+---
 
 For a demonstration of a line plot on a polar axis, see @fig-polar.
 

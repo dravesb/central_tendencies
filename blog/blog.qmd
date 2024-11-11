@@ -8,13 +8,5 @@ listing:
     type: table
 ---
 
-Welcome to my blog - Central Tendencies. 
-The purpose of this blog is to share what I am [reading and working on](blog_scroll.qmd). 
-My interests center around machine learning (recommendation systems, causal machine learning), applied and theoretical statistics, and statistical pedagogy and I tend to write mostly about these topics.
-
-![](../images/dist_shift.png){fig-align="center"}
-
-
-
 I'm currently working my way through [Machine Learning with PyTorch and Scikit-Learn](https://sebastianraschka.com/blog/2022/ml-pytorch-book.htmla)  by Raschka, Lui, and Mirjalili to become more comfortable with PyTorch for multi-output models and GNNs for recommender applications. 
 You can find my notes below. 

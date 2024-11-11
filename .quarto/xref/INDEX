@@ -100,5 +100,17 @@
   },
   "blog/reading/reading_posts/ml_with_pytorch_chp11/index.qmd": {
     "index.html": "069b8d4c"
+  },
+  "blog/blog_posts/ml_with_pytorch_chp11/index.qmd": {
+    "index.html": "6f0fc49b"
+  },
+  "blog/blog_scroll.qmd": {
+    "blog_scroll.html": "1f510e15"
+  },
+  "blog_posts/ml_with_pytorch_chp11/index.qmd": {
+    "index.html": "47abb95d"
+  },
+  "about copy.qmd": {
+    "about copy.html": "24bbc0e0"
   }
 }

@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>Central Tendencies</title>
-<link>dravesb.github.io/blog/blog.html</link>
-<atom:link href="dravesb.github.io/blog/blog.xml" rel="self" type="application/rss+xml"/>
+<link>dravesb.github.io/blog.html</link>
+<atom:link href="dravesb.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.56</generator>
 <lastBuildDate>Mon, 11 Nov 2024 05:00:00 GMT</lastBuildDate>
 <item>
   <title>ML with PyTorch &amp; Scikit-Learn: Chapter 11</title>
   <dc:creator>Benjamin Draves</dc:creator>
-  <link>dravesb.github.io/blog/blog_posts/ml_with_pytorch_chp11/</link>
+  <link>dravesb.github.io/blog_posts/ml_with_pytorch_chp11/</link>
   <description><![CDATA[ 
 
 
@@ -84,7 +84,7 @@ font-style: inherit;">True</span>)</span>
 <div id="fig-polar" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="dravesb.github.io/blog/blog_posts/ml_with_pytorch_chp11/index_files/figure-html/fig-polar-output-1.png" width="450" height="439" class="figure-img">
+<img src="dravesb.github.io/blog_posts/ml_with_pytorch_chp11/index_files/figure-html/fig-polar-output-1.png" width="450" height="439" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: A line plot on a polar axis
@@ -100,8 +100,7 @@ Figure&nbsp;1: A line plot on a polar axis
  ]]></description>
   <category>machine-learning</category>
   <category>deep-learning</category>
-  <category>book-notes</category>
-  <guid>dravesb.github.io/blog/blog_posts/ml_with_pytorch_chp11/</guid>
+  <guid>dravesb.github.io/blog_posts/ml_with_pytorch_chp11/</guid>
   <pubDate>Mon, 11 Nov 2024 05:00:00 GMT</pubDate>
 </item>
 </channel>

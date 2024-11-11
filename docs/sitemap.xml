@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>dravesb.github.io/about.html</loc>
-    <lastmod>2024-11-11T15:33:46.952Z</lastmod>
+    <lastmod>2024-11-11T16:43:48.344Z</lastmod>
   </url>
   <url>
     <loc>dravesb.github.io/blog/working_on/working_on_scroll.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>dravesb.github.io/index.html</loc>
-    <lastmod>2024-11-11T16:13:00.509Z</lastmod>
+    <lastmod>2024-11-11T16:41:08.013Z</lastmod>
   </url>
   <url>
     <loc>dravesb.github.io/blog/thinking_about/thinking_about_scroll.html</loc>
@@ -22,10 +22,30 @@
   </url>
   <url>
     <loc>dravesb.github.io/blog/blog.html</loc>
-    <lastmod>2024-11-11T16:18:07.405Z</lastmod>
+    <lastmod>2024-11-11T16:41:46.047Z</lastmod>
   </url>
   <url>
     <loc>dravesb.github.io/blog/reading/reading_posts/ml_with_pytorch_chp11/index.html</loc>
     <lastmod>2024-11-11T16:02:03.921Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/blog/blog_posts/ml_with_pytorch_chp11/index.html</loc>
+    <lastmod>2024-11-11T16:42:40.131Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/blog/blog_scroll.html</loc>
+    <lastmod>2024-11-11T16:16:27.476Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/blog.html</loc>
+    <lastmod>2024-11-11T16:38:05.105Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/about copy.html</loc>
+    <lastmod>2024-11-11T16:37:33.715Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/blog_posts/ml_with_pytorch_chp11/index.html</loc>
+    <lastmod>2024-11-11T16:23:04.562Z</lastmod>
   </url>
 </urlset>

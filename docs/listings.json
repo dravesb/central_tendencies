@@ -15,9 +15,7 @@
   },
   {
     "listing": "/blog/blog.html",
-    "items": [
-      "/blog/blog_posts/ml_with_pytorch_chp11/index.html"
-    ]
+    "items": []
   },
   {
     "listing": "/index.html",

@@ -60,7 +60,7 @@
     "href": "blog/blog.html",
     "title": "Welcome to Central Tendencies",
     "section": "",
-    "text": "I’m currently working my way through Machine Learning with PyTorch and Scikit-Learn by Raschka, Lui, and Mirjalili to become more comfortable with PyTorch for multi-output models and GNNs for recommender applications. You can find my notes below.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 11, 2024\n\n\nML with PyTorch & Scikit-Learn: Chapter 11\n\n\nBenjamin Draves\n\n\n\n\n\nNo matching items"
+    "text": "I’m currently working my way through Machine Learning with PyTorch and Scikit-Learn by Raschka, Lui, and Mirjalili to become more comfortable with PyTorch for multi-output models and GNNs for recommender applications. You can find my notes below.\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/blog.html#what-i-am-currently",
@@ -96,13 +96,6 @@
     "title": "Welcome to Central Tendencies",
     "section": "What I was working on…",
     "text": "What I was working on…\nYou can find what I was working on here."
-  },
-  {
-    "objectID": "blog/blog_posts/ml_with_pytorch_chp11/index.html",
-    "href": "blog/blog_posts/ml_with_pytorch_chp11/index.html",
-    "title": "ML with PyTorch & Scikit-Learn: Chapter 11",
-    "section": "",
-    "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis\n\n\n\n\n\n\\[\n\\mathbb{E}[x] = \\int_{0}^{\\infty} xf(x)dx\n\\]"
   },
   {
     "objectID": "blog.html",
@@ -145,5 +138,12 @@
     "title": "ML with PyTorch & Scikit-Learn: Chapter 11",
     "section": "",
     "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis\n\n\n\n\n\n\\[\n\\mathbb{E}[x] = \\int_{0}^{\\infty} xf(x)dx\n\\]"
+  },
+  {
+    "objectID": "code/resnick_1994/resnick_1994_demo.html",
+    "href": "code/resnick_1994/resnick_1994_demo.html",
+    "title": "User Collaborative Filtering",
+    "section": "",
+    "text": "This script accomodates\n\n### Test\nimport pandas as pd \nimport numpy as np\nfrom scipy import random as scrand\n\n\nx = np.random.rand(100)\nprint(x)\n\n[8.02408517e-01 2.55686786e-01 1.38686258e-01 4.73399986e-01\n 4.98322955e-01 6.39078319e-02 5.96192298e-01 6.68866636e-01\n 3.27846367e-01 8.69749146e-01 4.87818924e-01 3.30386413e-01\n 2.15395580e-01 5.19880846e-01 5.67088760e-01 5.50722275e-02\n 2.24783594e-01 8.27115720e-01 1.01352258e-01 8.53769726e-01\n 3.24090467e-01 4.52594084e-01 8.80347580e-01 4.90928370e-01\n 6.31704059e-01 9.29002485e-01 6.54604382e-01 4.71841665e-02\n 4.17589981e-01 8.58727146e-01 4.34221450e-01 9.31257069e-01\n 4.28095880e-01 7.34502062e-01 1.62551530e-01 6.66752474e-01\n 2.55813218e-01 5.78193576e-01 2.28413188e-01 4.25912923e-01\n 1.58313933e-01 6.73979076e-01 9.87955634e-01 8.58128007e-01\n 7.65019143e-01 5.10878198e-02 7.26822101e-01 8.67144564e-01\n 3.11401678e-01 3.78849751e-01 6.08170979e-01 5.08046847e-01\n 8.61063736e-01 4.77969196e-01 6.69135359e-01 1.54885779e-01\n 7.80689329e-01 8.52943994e-01 6.79590663e-01 1.97882348e-01\n 4.88091593e-01 9.37856699e-01 8.12613093e-01 3.13405736e-01\n 3.76378582e-01 2.51053105e-01 8.15781618e-01 6.47932277e-01\n 9.43302536e-01 5.01520410e-01 7.03679159e-01 6.46264967e-01\n 6.74056246e-01 9.85287781e-01 6.00924627e-01 4.84275076e-01\n 1.30436353e-01 9.07883073e-01 4.32921168e-01 4.47959281e-01\n 3.96872629e-01 7.90218574e-01 2.12274960e-02 4.60177429e-01\n 4.19070210e-01 2.18122385e-01 5.95580471e-01 2.57038516e-01\n 1.80910704e-01 8.91169080e-01 8.85992798e-04 8.93455033e-01\n 1.30319548e-01 6.12067665e-01 8.31333822e-01 7.58496828e-01\n 2.48223530e-01 3.01716780e-01 7.25245792e-01 2.27277942e-01]"
   }
 ]

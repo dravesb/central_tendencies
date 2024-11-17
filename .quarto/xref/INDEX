@@ -112,5 +112,17 @@
   },
   "about copy.qmd": {
     "about copy.html": "24bbc0e0"
+  },
+  "blog/blog_posts/template/index.qmd": {
+    "index.html": "6e4835c0"
+  },
+  "blog/blog_posts/template copy/index.qmd": {
+    "index.html": "cbfe4e11"
+  },
+  "blog/blog_posts/resnick_1994/index.qmd": {
+    "index.html": "ea1eec8c"
+  },
+  "code/resnick_1994/resnick_1994_demo.ipynb": {
+    "resnick_1994_demo.html": "61c7ca78"
   }
 }

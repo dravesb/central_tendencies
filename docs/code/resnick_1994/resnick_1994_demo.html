@@ -167,8 +167,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#generate-synthetic-data" id="toc-generate-synthetic-data" class="nav-link active" data-scroll-target="#generate-synthetic-data">Generate Synthetic Data</a></li>
+  <li><a href="#working-with-scipy.sparse" id="toc-working-with-scipy.sparse" class="nav-link" data-scroll-target="#working-with-scipy.sparse">Working with scipy.sparse</a></li>
+  <li><a href="#writting-a-similarity-method" id="toc-writting-a-similarity-method" class="nav-link" data-scroll-target="#writting-a-similarity-method">Writting a Similarity Method</a></li>
+  <li><a href="#user-to-user-cf-resnick-1994" id="toc-user-to-user-cf-resnick-1994" class="nav-link" data-scroll-target="#user-to-user-cf-resnick-1994">User to User CF (Resnick 1994)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -192,46 +201,252 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This script accomodates</p>
-<div id="cell-4" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Test</span></span>
+<p>This script accommodates implementation of user-collaborative filtering from the original GroupLens paper (<a href="http://dx.doi.org/10.1145/192844.192905">Resnick et al 1994</a>). See here for a full write up</p>
+<section id="generate-synthetic-data" class="level2">
+<h2 class="anchored" data-anchor-id="generate-synthetic-data">Generate Synthetic Data</h2>
+<div id="cell-4" class="cell" data-execution_count="254">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Imports </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> random <span class="im">as</span> scrand</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> sparse  </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> copy <span class="im">import</span> deepcopy</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.rand(<span class="dv">100</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-5" class="cell" data-execution_count="267">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate some fake rating data to play with </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n_users <span class="op">=</span> <span class="dv">1_000</span> <span class="co"># number of users</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n_items <span class="op">=</span> <span class="dv">100</span> <span class="co"># of items</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> sparse.random(n_users, n_items, density<span class="op">=</span><span class="fl">0.10</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'csr'</span>, random_state<span class="op">=</span><span class="dv">1985</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ratings.data <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">5</span>, size<span class="op">=</span>ratings.data.shape).astype(<span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="268">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example rating for a single row</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ratings[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[8.02408517e-01 2.55686786e-01 1.38686258e-01 4.73399986e-01
- 4.98322955e-01 6.39078319e-02 5.96192298e-01 6.68866636e-01
- 3.27846367e-01 8.69749146e-01 4.87818924e-01 3.30386413e-01
- 2.15395580e-01 5.19880846e-01 5.67088760e-01 5.50722275e-02
- 2.24783594e-01 8.27115720e-01 1.01352258e-01 8.53769726e-01
- 3.24090467e-01 4.52594084e-01 8.80347580e-01 4.90928370e-01
- 6.31704059e-01 9.29002485e-01 6.54604382e-01 4.71841665e-02
- 4.17589981e-01 8.58727146e-01 4.34221450e-01 9.31257069e-01
- 4.28095880e-01 7.34502062e-01 1.62551530e-01 6.66752474e-01
- 2.55813218e-01 5.78193576e-01 2.28413188e-01 4.25912923e-01
- 1.58313933e-01 6.73979076e-01 9.87955634e-01 8.58128007e-01
- 7.65019143e-01 5.10878198e-02 7.26822101e-01 8.67144564e-01
- 3.11401678e-01 3.78849751e-01 6.08170979e-01 5.08046847e-01
- 8.61063736e-01 4.77969196e-01 6.69135359e-01 1.54885779e-01
- 7.80689329e-01 8.52943994e-01 6.79590663e-01 1.97882348e-01
- 4.88091593e-01 9.37856699e-01 8.12613093e-01 3.13405736e-01
- 3.76378582e-01 2.51053105e-01 8.15781618e-01 6.47932277e-01
- 9.43302536e-01 5.01520410e-01 7.03679159e-01 6.46264967e-01
- 6.74056246e-01 9.85287781e-01 6.00924627e-01 4.84275076e-01
- 1.30436353e-01 9.07883073e-01 4.32921168e-01 4.47959281e-01
- 3.96872629e-01 7.90218574e-01 2.12274960e-02 4.60177429e-01
- 4.19070210e-01 2.18122385e-01 5.95580471e-01 2.57038516e-01
- 1.80910704e-01 8.91169080e-01 8.85992798e-04 8.93455033e-01
- 1.30319548e-01 6.12067665e-01 8.31333822e-01 7.58496828e-01
- 2.48223530e-01 3.01716780e-01 7.25245792e-01 2.27277942e-01]</code></pre>
+<pre><code>  (0, 11)   3.0
+  (0, 16)   4.0
+  (0, 23)   4.0
+  (0, 26)   4.0
+  (0, 34)   1.0
+  (0, 38)   3.0
+  (0, 86)   4.0
+  (0, 89)   2.0
+  (0, 95)   0.0
+  (0, 98)   1.0</code></pre>
+</div>
+</div>
+</section>
+<section id="working-with-scipy.sparse" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-scipy.sparse">Working with scipy.sparse</h2>
+<div id="cell-8" class="cell" data-execution_count="269">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">dir</span>(ratings[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['__abs__', '__add__', '__array_priority__', '__bool__', '__class__', '__delattr__', '__dict__', '__dir__', '__div__', '__doc__', '__eq__', '__format__', '__ge__', '__getattr__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__idiv__', '__imul__', '__init__', '__init_subclass__', '__isub__', '__iter__', '__itruediv__', '__le__', '__len__', '__lt__', '__matmul__', '__module__', '__mul__', '__ne__', '__neg__', '__new__', '__nonzero__', '__pow__', '__radd__', '__rdiv__', '__reduce__', '__reduce_ex__', '__repr__', '__rmatmul__', '__rmul__', '__round__', '__rsub__', '__rtruediv__', '__setattr__', '__setitem__', '__sizeof__', '__slotnames__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__weakref__', '_add_dense', '_add_sparse', '_arg_min_or_max', '_arg_min_or_max_axis', '_asindices', '_binopt', '_cs_matrix__get_has_canonical_format', '_cs_matrix__get_sorted', '_cs_matrix__set_has_canonical_format', '_cs_matrix__set_sorted', '_deduped_data', '_divide', '_divide_sparse', '_get_arrayXarray', '_get_arrayXint', '_get_arrayXslice', '_get_columnXarray', '_get_dtype', '_get_intXarray', '_get_intXint', '_get_intXslice', '_get_sliceXarray', '_get_sliceXint', '_get_sliceXslice', '_get_submatrix', '_imag', '_inequality', '_insert_many', '_major_index_fancy', '_major_slice', '_maximum_minimum', '_min_or_max', '_min_or_max_axis', '_minor_index_fancy', '_minor_reduce', '_minor_slice', '_mul_multivector', '_mul_scalar', '_mul_sparse_matrix', '_mul_vector', '_prepare_indices', '_process_toarray_args', '_real', '_rsub_dense', '_scalar_binopt', '_set_arrayXarray', '_set_arrayXarray_sparse', '_set_dtype', '_set_intXint', '_set_many', '_set_self', '_setdiag', '_shape', '_sub_dense', '_sub_sparse', '_swap', '_validate_indices', '_with_data', '_zero_many', 'arcsin', 'arcsinh', 'arctan', 'arctanh', 'argmax', 'argmin', 'asformat', 'asfptype', 'astype', 'ceil', 'check_format', 'conj', 'conjugate', 'copy', 'count_nonzero', 'data', 'deg2rad', 'diagonal', 'dot', 'dtype', 'eliminate_zeros', 'expm1', 'floor', 'format', 'getH', 'get_shape', 'getcol', 'getformat', 'getmaxprint', 'getnnz', 'getrow', 'has_canonical_format', 'has_sorted_indices', 'indices', 'indptr', 'log1p', 'max', 'maximum', 'maxprint', 'mean', 'min', 'minimum', 'multiply', 'ndim', 'nnz', 'nonzero', 'power', 'prune', 'rad2deg', 'reshape', 'resize', 'rint', 'set_shape', 'setdiag', 'shape', 'sign', 'sin', 'sinh', 'sort_indices', 'sorted_indices', 'sqrt', 'sum', 'sum_duplicates', 'tan', 'tanh', 'toarray', 'tobsr', 'tocoo', 'tocsc', 'tocsr', 'todense', 'todia', 'todok', 'tolil', 'transpose', 'trunc']</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="270">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shape of first row</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ratings[<span class="dv">0</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="270">
+<pre><code>(1, 100)</code></pre>
+</div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="271">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing and shape of certain rows and columns</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'''</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ss">    Row 1            dimension </span><span class="sc">{</span>ratings[<span class="dv">0</span>]<span class="sc">.</span>shape<span class="sc">}</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    Row 1 transposed dimension </span><span class="sc">{</span>ratings[<span class="dv">0</span>]<span class="sc">.</span>T<span class="sc">.</span>shape<span class="sc">}</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ss">    Col 1            dimension </span><span class="sc">{</span>ratings[:, <span class="dv">0</span>]<span class="sc">.</span>shape<span class="sc">}</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ss">    Col 1 transposed dimension </span><span class="sc">{</span>ratings[:, <span class="dv">0</span>]<span class="sc">.</span>T<span class="sc">.</span>shape<span class="sc">}</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ss">    '''</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Row 1            dimension (1, 100)
+    Row 1 transposed dimension (100, 1)
+    Col 1            dimension (1000, 1)
+    Col 1 transposed dimension (1, 1000)
+    </code></pre>
+</div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="272">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplying rows</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>r1_norm2 <span class="op">=</span> ratings[<span class="dv">0</span>].dot(ratings[<span class="dv">0</span>].T)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Inner product</span><span class="ch">\n\t</span><span class="ss"> class: </span><span class="sc">{</span><span class="bu">type</span>(r1_norm2)<span class="sc">}</span><span class="ch">\n\t</span><span class="ss"> shape: </span><span class="sc">{</span>r1_norm2<span class="sc">.</span>shape<span class="sc">}</span><span class="ch">\n\t</span><span class="ss"> value: </span><span class="sc">{</span>r1_norm2[<span class="dv">0</span>, <span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inner product
+     class: &lt;class 'scipy.sparse.csr.csr_matrix'&gt;
+     shape: (1, 1)
+     value: 88.0</code></pre>
+</div>
+</div>
+</section>
+<section id="writting-a-similarity-method" class="level2">
+<h2 class="anchored" data-anchor-id="writting-a-similarity-method">Writting a Similarity Method</h2>
+<div id="cell-13" class="cell" data-execution_count="273">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> similarity(u, v, method<span class="op">=</span><span class="st">'cosine'</span>):   </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''Return the similarity between entity u and v based on previous ratings</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Args: </span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">        u (sparse array) - the ratings vector for entity u </span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">        v (sparse array) - the ratings vector for entity v </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">        method (str) - the similarity methods (cosine, adjusted-cosine, pearson)</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns: </span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">        float: A numerical score of the similarity between entities u and v ratings</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># format matrices</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method<span class="op">==</span><span class="st">'cosine'</span>:</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        sim <span class="op">=</span> u.dot(v.T)[<span class="dv">0</span>,<span class="dv">0</span>] <span class="op">/</span> (<span class="fl">1e-5</span> <span class="op">+</span><span class="fl">1.0</span> <span class="op">*</span> np.sqrt(u.dot(u.T)[<span class="dv">0</span>,<span class="dv">0</span>] <span class="op">*</span> v.dot(v.T)[<span class="dv">0</span>,<span class="dv">0</span>]))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(sim)        </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> method<span class="op">==</span><span class="st">'pearson'</span>:</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># center vectors </span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        u_cen, v_cen <span class="op">=</span> deepcopy(u), deepcopy(v)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        u_cen.data <span class="op">-=</span> u_cen.data.mean()</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        v_cen.data <span class="op">-=</span> v_cen.data.mean()</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># comptute similarity</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        sim <span class="op">=</span> u_cen.dot(v_cen.T)[<span class="dv">0</span>,<span class="dv">0</span>] <span class="op">/</span> (<span class="fl">1e-5</span> <span class="op">+</span> <span class="fl">1.0</span> <span class="op">*</span> np.sqrt(u_cen.dot(u_cen.T)[<span class="dv">0</span>,<span class="dv">0</span>] <span class="op">*</span> v_cen.dot(v_cen.T)[<span class="dv">0</span>,<span class="dv">0</span>]))</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(sim)</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: </span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(<span class="st">"Please use method = {'cosine', 'pearson'}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-14" class="cell" data-execution_count="274">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples! </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ind1, ind2 <span class="op">=</span> <span class="dv">0</span>, <span class="dv">3</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pearson <span class="op">=</span> similarity(ratings[ind1], ratings[ind2], method<span class="op">=</span><span class="st">'pearson'</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>cosine <span class="op">=</span> similarity(ratings[ind1], ratings[ind2], method<span class="op">=</span><span class="st">'cosine'</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ss">f'The pearson similarity is </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(pearson, <span class="dv">2</span>)<span class="sc">}</span><span class="ss"> and cosine similarity is </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(cosine, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">.'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="274">
+<pre><code>'The pearson similarity is -0.14 and cosine similarity is 0.0.'</code></pre>
+</div>
+</div>
+</section>
+<section id="user-to-user-cf-resnick-1994" class="level2">
+<h2 class="anchored" data-anchor-id="user-to-user-cf-resnick-1994">User to User CF (Resnick 1994)</h2>
+<p>Here we utilize the similarity function of pearson with the rating hueristic score as set to.</p>
+<div id="cell-18" class="cell" data-execution_count="275">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cf_user_to_user(<span class="bu">id</span>, ratings, sim_method<span class="op">=</span><span class="st">'pearson'</span>):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''Return the imputed ratings for unobserved-ratings for entity u</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Args: </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">        id (int) - id of the entity for the ratings vector to be applied for</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">        ratings (sparse matrix) - the ratings matrix to apply CF towards</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">        method (str) - the similarity methods (cosine, pearson)</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns: </span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">        cf_ratings (np.array): An np array with imputed estimates of ratings for un-rated articles. </span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fetch average user rating</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    n_users, n_items <span class="op">=</span> ratings.shape</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute user-to-user similarity</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    sims <span class="op">=</span> np.array([similarity(ratings[<span class="bu">id</span>], ratings[user]) <span class="cf">for</span> user <span class="kw">in</span> <span class="bu">range</span>(n_users)])</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    total_sim <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(sims))</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># residualize ratings</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    ratings_resid <span class="op">=</span> deepcopy(ratings)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    ratings_resid.data <span class="op">=</span> ratings_resid.data.astype(<span class="bu">float</span>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> user <span class="kw">in</span> <span class="bu">range</span>(n_users): </span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>        ratings_resid[user].data <span class="op">-=</span> ratings_resid[user].data.mean()</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># store previously rated item ratingss</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    cf_ratings <span class="op">=</span> np.full(n_items, np.nan)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    items_ranked <span class="op">=</span> ratings[<span class="bu">id</span>].indices</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    cf_ratings[items_ranked] <span class="op">=</span> ratings[<span class="bu">id</span>].data</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute average rating for every item not ranked</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    unrated_items <span class="op">=</span> np.setdiff1d(np.arange(n_items), items_ranked)</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> unrated_items: </span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>        cf_ratings[item] <span class="op">=</span> ratings[<span class="bu">id</span>].data.mean() <span class="op">+</span> np.<span class="bu">sum</span>(sims <span class="op">*</span> ratings[:,item])<span class="op">/</span>total_sim</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return ratings</span></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(cf_ratings)</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="276">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cf_user_to_user(<span class="dv">1</span>, ratings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="276">
+<pre><code>array([1.82957415, 1.82499751, 1.85299315, 1.87906179, 1.83613618,
+       1.86996127, 1.83657094, 1.8580771 , 1.94402725, 1.88251208,
+       1.87371842, 1.86202115, 1.8200888 , 1.8981778 , 1.91203758,
+       1.        , 1.86173336, 1.87208495, 1.86493801, 4.        ,
+       1.82864583, 1.86936068, 1.78605192, 1.86331963, 1.82654638,
+       1.92066823, 1.        , 3.        , 1.86705059, 0.        ,
+       1.8646681 , 1.        , 1.86397559, 1.81707945, 1.85286705,
+       1.82227709, 1.83254404, 1.85650547, 0.        , 1.89703854,
+       1.78317043, 1.90312655, 1.89427064, 1.89091876, 1.82548385,
+       1.81282133, 1.82874793, 1.88443935, 1.86564691, 1.84104925,
+       1.        , 1.90751662, 1.85747663, 1.95335813, 0.        ,
+       1.89969457, 1.84086516, 1.84756262, 1.83743379, 2.        ,
+       1.82107291, 1.84559239, 1.90879037, 1.81514726, 1.84039083,
+       1.88859077, 1.90118094, 1.84929746, 1.83720612, 1.86472832,
+       2.        , 1.88060354, 1.90305685, 1.89286469, 1.88215981,
+       1.86623908, 1.87150958, 3.        , 1.87675678, 1.80639099,
+       1.93212828, 1.84710448, 1.85277036, 1.85924812, 4.        ,
+       4.        , 1.90331998, 0.        , 1.85558737, 1.84610447,
+       1.85985853, 1.85272794, 1.81752903, 1.88978615, 1.89229447,
+       1.        , 1.85638961, 1.88321569, 1.86705772, 1.87842497])</code></pre>
+</div>
+</div>
+<div id="cell-21" class="cell" data-execution_count="210">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> imputed_ratings(<span class="bu">id</span>, ratings, method <span class="op">=</span> <span class="st">'user-to-user'</span>, sim_method<span class="op">=</span><span class="st">'cosine'</span>):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''Return the imputed ratings for unobserved-ratings for entity u</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Args: </span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">        id (int) - id of the entity for the ratings vector to be applied for</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">        ratings (sparse matrix) - the ratings matrix to apply CF towards</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">        method (str) - the similarity methods (cosine, pearson)</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns: </span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">        cf_ratings (np.array): An np array with imputed estimates of ratings for un-rated articles. </span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># find entity and items rated </span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    id_vec <span class="op">=</span> ratings[<span class="bu">id</span>] <span class="cf">if</span> method <span class="op">==</span><span class="st">'user-to-user'</span> <span class="cf">else</span> ratings[:, <span class="bu">id</span>]</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    n_users, n_items <span class="op">=</span> ratings.shape </span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    entities_rated <span class="op">=</span> id_vec.nonzero()</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fetch entity tp entity to entity similarity</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">'user-to-user'</span>:</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        sims <span class="op">=</span> [similarity(id_vec, ratings[i], method<span class="op">=</span>sim_method) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_users)]</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        cf_ratings <span class="op">=</span> np.zeros(shape<span class="op">=</span>(n_items,))</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> item <span class="kw">in</span> <span class="bu">range</span>(n_items):</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> item <span class="kw">in</span> entities_rated[<span class="dv">1</span>]:</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>                cf_ratings <span class="op">=</span> entities_rated[<span class="dv">0</span>][item]</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>: </span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> user <span class="kw">in</span> <span class="bu">range</span>(n_users):</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>                cf_ratings <span class="op">=</span> [sims[u] <span class="op">*</span> ratings[u,i] <span class="cf">for</span> user u <span class="kw">in</span> <span class="bu">range</span>(n_users)]</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> method <span class="op">==</span> <span class="st">'item-to-item'</span>: </span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>        sims <span class="op">=</span> [similarity(id_vec, ratings[:,i], method<span class="op">=</span>sim_method) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_items)]</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: </span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute impute scores for all </span></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">'user-to-user'</span>: </span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>        sim_scores <span class="op">=</span> [sims[i] <span class="op">*</span> ratings[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_users)]</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>        cf_ratings <span class="op">=</span> np.<span class="bu">sum</span>(sim_scores) <span class="op">/</span> (<span class="fl">1.0</span> <span class="op">*</span> np.sim(sims))</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">"&lt;ipython-input-210-01147ac22c6c&gt;"</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">29</span>
+<span class="ansi-red-fg">    cf_ratings = [sims[u] * ratings[u,i] for user u in range(n_users)]</span>
+    ^
+<span class="ansi-red-fg">IndentationError</span><span class="ansi-red-fg">:</span> expected an indented block
+</pre>
+</div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

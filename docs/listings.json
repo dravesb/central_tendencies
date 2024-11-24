@@ -16,8 +16,6 @@
   {
     "listing": "/blog/blog.html",
     "items": [
-      "/blog/blog_posts/template/index.html",
-      "/blog/blog_posts/ml_with_pytorch_chp11/index.html",
       "/blog/blog_posts/resnick_1994/index.html"
     ]
   },

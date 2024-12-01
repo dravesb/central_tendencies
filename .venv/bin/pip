@@ -1,4 +1,4 @@
-#!/Users/benjamindraves/Documents/Work/github/central_tendencies/.venv/bin/python3.12
+#!/Users/benjamindraves/Documents/Work/github/central_tendencies/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

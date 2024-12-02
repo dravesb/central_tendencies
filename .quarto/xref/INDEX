@@ -124,5 +124,11 @@
   },
   "code/resnick_1994/resnick_1994_demo.ipynb": {
     "resnick_1994_demo.html": "61c7ca78"
+  },
+  "blog/blog_posts/sarwar_2001/index.qmd": {
+    "index.html": "80d8b1dc"
+  },
+  "code/example/example.ipynb": {
+    "example.html": "9a0d0266"
   }
 }

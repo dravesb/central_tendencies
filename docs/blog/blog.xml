@@ -12,7 +12,7 @@
 <generator>quarto-1.5.56</generator>
 <lastBuildDate>Sun, 17 Nov 2024 05:00:00 GMT</lastBuildDate>
 <item>
-  <title>Paper Notes - GroupLens: An Open Architecture for Collaborative Filtering of Netnews</title>
+  <title>GroupLens: An Open Architecture for Collaborative Filtering of Netnews</title>
   <dc:creator>Benjamin Draves</dc:creator>
   <link>dravesb.github.io/blog/blog_posts/resnick_1994/</link>
   <description><![CDATA[ 
@@ -21,8 +21,8 @@
 
 
 
-<section id="paper-overview" class="level1">
-<h1>Paper Overview</h1>
+<section id="overview" class="level1">
+<h1>Overview</h1>
 <p>The <a href="http://dx.doi.org/10.1145/192844.192905"><em>GroupLens: An Open Architecture for Collaborative Filtering of Netnews</em></a> paper was one of the first papers to introduce collaborative filtering for recommendation applications in 1994. The paper focuses on not just the recommendation problem but also how those recommendations are integrated into the Usenet Netnews network, displayed to users, and implications for serving personalized news to users.</p>
 </section>
 <section id="introduction-problem" class="level1">
@@ -78,8 +78,8 @@ The stated goals of GroupLens was to</p>
 <h1>Ramifications</h1>
 <p>The paper discuss how they might surface the confidence they have in the scores produced by this algorithm. The authors recommend the scores can be used to remove low (estimated) rated articles or can show the estimated scores as part of the UI. They point how each of these approaches may bias data collection but leave it to the News group moderators on how they want to integrate these ratings to their Newgroup bulletin.</p>
 </section>
-<section id="conclusion-and-other-notes" class="level1">
-<h1>Conclusion and Other Notes</h1>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
 <p>The paper spend a significant portion of time on the application (Netnews) and not the individual recommendation mechanism. This allows for moderators and users of this news client to understand what the recommendation collaborative filter is doing and how it can reliably add value over time. The authors even spend time understanding the social impact of fractured news ecosystems driven by recommendation engines. This quote is from their “Global Villages” section.</p>
 <blockquote class="blockquote">
 <p>Present newsgroups, like newspapers and local television shows before them, provide a shared history for their community of readers. With GroupLens, users may choose to read articles only from a small group with whom they share many common interests. Over time this could lead to a fracture of the global village into many small tribes, each forming a virtual community but nonetheless isolated from each other. Some kind of fracture is inevitable and even desirable, because no user can keep up with the overwhelming volume of news produced each day. The question is whether the subgroups will be closed or permeable.</p>
@@ -90,10 +90,10 @@ The stated goals of GroupLens was to</p>
 </section>
 
  ]]></description>
+  <category>paper-notes</category>
   <category>machine-learning</category>
   <category>recommendation-systems</category>
   <category>collaborative-filtering</category>
-  <category>paper-notes</category>
   <guid>dravesb.github.io/blog/blog_posts/resnick_1994/</guid>
   <pubDate>Sun, 17 Nov 2024 05:00:00 GMT</pubDate>
 </item>

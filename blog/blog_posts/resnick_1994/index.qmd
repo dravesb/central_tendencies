@@ -1,10 +1,10 @@
 ---
-title: "Paper Notes - GroupLens: An Open Architecture for Collaborative Filtering of Netnews"
+title: "GroupLens: An Open Architecture for Collaborative Filtering of Netnews"
 description: "Paper notes on original GroupLens paper introducing Collaborative Filtering for new article recommendation"
 author:
   - name: Benjamin Draves
 date: 2024-11-17
-categories: [machine-learning, recommendation-systems, collaborative-filtering, paper-notes] # self-defined categories
+categories: [paper-notes, machine-learning, recommendation-systems, collaborative-filtering] # self-defined categories
 draft: false 
 format:
   html:
@@ -12,7 +12,7 @@ format:
 #jupyter: python3
 ---
 
-# Paper Overview
+# Overview
 
 The [*GroupLens: An Open Architecture for Collaborative Filtering of Netnews*](http://dx.doi.org/10.1145/192844.192905) paper was one of the first papers to introduce collaborative filtering for recommendation applications in 1994. 
 The paper focuses on not just the recommendation problem but also how those recommendations are integrated into the Usenet Netnews network, displayed to users, and implications for serving personalized news to users. 
@@ -98,7 +98,7 @@ The paper discuss how they might surface the confidence they have in the scores 
 The authors recommend the scores can be used to remove low (estimated) rated articles or can show the estimated scores as part of the UI. 
 They point how each of these approaches may bias data collection but leave it to the News group moderators on how they want to integrate these ratings to their Newgroup bulletin. 
 
-# Conclusion and Other Notes
+# Conclusion
 
 The paper spend a significant portion of time on the application (Netnews) and not the individual recommendation mechanism. 
 This allows for moderators and users of this news client to understand what the recommendation collaborative filter is doing and how it can reliably add value over time. 

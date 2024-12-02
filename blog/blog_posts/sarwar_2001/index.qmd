@@ -5,7 +5,7 @@ author:
   - name: Benjamin Draves
 date: 2024-12-01
 categories: [paper-notes, machine-learning, recommendation-systems, collaborative-filtering] # self-defined categories
-draft: true 
+draft: false 
 format:
   html:
     code-fold: true

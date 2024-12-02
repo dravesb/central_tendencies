@@ -10,7 +10,102 @@
 <atom:link href="dravesb.github.io/blog/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.56</generator>
-<lastBuildDate>Sun, 17 Nov 2024 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 01 Dec 2024 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Item-Based Collaborative Filtering Recommendation Algorithms</title>
+  <dc:creator>Benjamin Draves</dc:creator>
+  <link>dravesb.github.io/blog/blog_posts/sarwar_2001/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p><a href="https://files.grouplens.org/papers/www10_sarwar.pdf">Sarwar et al.’s 2001 paper on Item-Based Collaborative Filtering</a> is one of the first papers from the GroupLens group on estimating user-item ratings utilizing item-to-item similarities. This paper discusses an item based similarity rating scheme and much of the computational benefits one can gain from utilizing the item-based approach and a model rating estimation framework. Moreover, the authors provide thorough experiments which address the impact of data sparsity, neighborhood size, and similarity measures on the performance of this algorithm.</p>
+</section>
+<section id="introduction-problem" class="level1">
+<h1>Introduction &amp; Problem</h1>
+<p>The key challenges that the authors attempt to address in the paper are (i) improve the scalability of user-to-user collaborative filtering algorithms and (ii) improve the quality of the recommendations produced by these algorithms. They give an overview of existing collaborative filtering approaches which tend to be very memory intensive and non-scalable. For example, consider the rating scheme for user-to-user collaborative filtering.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Chat%7BR%7D_%7Bus%7D%20=%20%5Cbar%7BR%7D_u%20+%20%5Cfrac%7B%5Csum_%7Bv%5Cin%20N(u)%7D%5Ctext%7Bsim%7D(u,%20v)(R_%7Bvs%7D%20-%20%5Cbar%7BR%7D_v)%7D%7B%5Csum_%7Bv%5Cin%20N(u)%7D%5Cmid%5Ctext%7Bsim%7D(u,v)%5Cmid%7D%0A"></p>
+<p>This ratings approach is both non-scalable and may suffer from data sparsity.</p>
+<p>To see why it is non-scalable, consider a given user <img src="https://latex.codecogs.com/png.latex?u">. The construction of the neighborhood <img src="https://latex.codecogs.com/png.latex?N(u)"> is typically performed during online-inference as the the number of co-rated items between users can change quickly (e.g.&nbsp;a new user who ranks 10 items upon sign-up). Therefore, this computation must be done in real-time or face some SLA, necessitating a full loop over the user based <img src="https://latex.codecogs.com/png.latex?O(n)"> for each user-item pair we look to estimate a rating for.</p>
+<p>To see why this method suffers from data sparsity, consider if a user has no neighbors <img src="https://latex.codecogs.com/png.latex?N(u)"> that have rated item <img src="https://latex.codecogs.com/png.latex?s">. In this setting the numerator is ill-defined and user-to-user based CF cannot provide recommendations.</p>
+<p>These observations motivate the authors to abandon measuring the very costly <img src="https://latex.codecogs.com/png.latex?O(n%5E2)"> user-to-user similarity problem during online inference in favor of the <img src="https://latex.codecogs.com/png.latex?O(m%5E2)"> item-to-item similarity problem which can be carried out offline. The intuition is that users will enjoy products similar to what they have enjoyed in the past, and that item-to-item similarity is a more stable relationship over time, allowing for large batch computations of these scores.</p>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<section id="item-based-collaborative-filtering" class="level2">
+<h2 class="anchored" data-anchor-id="item-based-collaborative-filtering">Item-Based Collaborative Filtering</h2>
+<p>Similar to user-to-user based collaborative filtering, ratings can be estimated using either (i) a <em>memory based</em> score utilizing weighted sums of observed ratings or (ii) a <em>model based</em> score using rules <em>learned</em> from the observed ratings data. For the memory based approach, ratings are estimated as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Chat%7BR%7D_%7Bus%7D%20=%20%5Cfrac%7B%5Csum_%7Bt%5Cin%20N(s)%7D%5Ctext%7Bsim%7D(s,%20t)R_%7But%7D%7D%7B%5Csum_%7Bt%5Cin%20N(s)%7D%5Cmid%5Ctext%7Bsim%7D(s,%20t)%5Cmid%7D%0A"></p>
+<p>where the neighborhood <img src="https://latex.codecogs.com/png.latex?N(s)"> is the set of all items that share a co-rater (e.g.&nbsp;someone who rated both item <img src="https://latex.codecogs.com/png.latex?s"> and <img src="https://latex.codecogs.com/png.latex?t">). Notice here we do not need to mean center user <img src="https://latex.codecogs.com/png.latex?u">’s ratings as we only utilize their ratings in this computation. Moreover, we can pre-compute the neighborhood <img src="https://latex.codecogs.com/png.latex?N(s)"> and the item-to-item similarities offline improving performance.</p>
+<p>In addition to this scoring methodology, the authors introduce a regression-based model approach. They utilizing the same scoring function above by utilize the smoothed scores <img src="https://latex.codecogs.com/png.latex?%5Ctilde%7BR%7D_%7But%7D"> by first regressing the item vectors <img src="https://latex.codecogs.com/png.latex?R_%7B%5Ccdot,%20t%7D"> onto <img src="https://latex.codecogs.com/png.latex?R_%7B%5Ccdot,%20s%7D">. (Candidly, I found this section very hard to follow. I think <a href="https://link.springer.com/book/10.1007/978-3-319-29659-3">Aggarwal’s Section 2.6</a> connects these ideas more clearly.)</p>
+</section>
+<section id="measuring-item-similarity" class="level2">
+<h2 class="anchored" data-anchor-id="measuring-item-similarity">Measuring Item Similarity</h2>
+<p>Measuring item-to-item similarity is the key to solving the collaborative filtering problem. The authors introduce three methods which are still popular today. For ease of notation, let <img src="https://latex.codecogs.com/png.latex?r_s%5Cin%5Cmathbb%7BR%7D%5EN"> denote the ratings vector for item <img src="https://latex.codecogs.com/png.latex?s">. Then the three methods are given by</p>
+<ol type="1">
+<li>Cosine similarity: <img src="https://latex.codecogs.com/png.latex?%0A%20%20%5Ctext%7Bsim%7D(s,%20t)%20=%20%5Cfrac%7Br_s%5ETr_t%7D%7B%5C%7Cr_s%5C%7C_2%5C%7Cr_t%5C%7C_2%7D%0A%20%20"></li>
+<li>Adjusted-cosine similarity: <img src="https://latex.codecogs.com/png.latex?%0A%20%20%5Ctext%7Bsim%7D(s,%20t)%20=%20%5Cfrac%7B%5Csum_%7Bi=1%7D%5En(R_%7Bis%7D%20-%20%5Cbar%7BR%7D_i)(R_%7Bit%7D%20-%20%5Cbar%7BR%7D_i)%7D%7B%5Csqrt%7B%5Csum_%7Bi=1%7D%5En(R_%7Bis%7D%20-%20%5Cbar%7BR%7D_i)%5E2%7D%5Csqrt%7B%5Csum_%7Bi=1%7D%5En(R_%7Bit%7D%20-%20%5Cbar%7BR%7D_i)%5E2%7D%7D%0A%20%20"></li>
+<li>Correlation similarity: <img src="https://latex.codecogs.com/png.latex?%0A%20%20%5Ctext%7Bsim%7D(s,%20t)%20=%20%5Cfrac%7B%5Csum_%7Bi=1%7D%5En(R_%7Bis%7D%20-%20%5Cbar%7BR%7D_s)(R_%7Bit%7D%20-%20%5Cbar%7BR%7D_t)%7D%7B%5Csqrt%7B%5Csum_%7Bi=1%7D%5En(R_%7Bis%7D%20-%20%5Cbar%7BR%7D_s)%5E2%7D%5Csqrt%7B%5Csum_%7Bi=1%7D%5En(R_%7Bit%7D%20-%20%5Cbar%7BR%7D_t)%5E2%7D%7D%0A%20%20"></li>
+</ol>
+<p>The unifying piece of each of these similarity methods is the cosine similarity operator. The only thing that changes between these methods is which matrix of ratings it acts on.</p>
+<p>For instance, taking <img src="https://latex.codecogs.com/png.latex?%5Cell_2">-normalized dot products of column vectors in <img src="https://latex.codecogs.com/png.latex?R"> gives the cosine similarity. The same operation on the mean-centered rows gives the adjusted cosine similarity and mean-center columns give the correlation similarity.</p>
+<p>Therefore, I think it’s better to think about each of these similarity measures as performing the same operation (i.e.&nbsp;cosine-similarity between column vectors) just on difference matrices:</p>
+<ol type="1">
+<li>Cosine similarity: <img src="https://latex.codecogs.com/png.latex?R"></li>
+<li>Adjusted-cosine similarity: <img src="https://latex.codecogs.com/png.latex?R%20-%20(R%5Cmathbf%7B1%7D_m%5Cmathbf%7B1%7D_m%5ET)/m"></li>
+<li>Correlation similarity: <img src="https://latex.codecogs.com/png.latex?R%20-%20(%5Cmathbf%7B1%7D_n%5Cmathbf%7B1%7D_n%5ETR)/n"></li>
+</ol>
+<p>I’m ignoring the fact that some ratings here are not-present and writing <img src="https://latex.codecogs.com/png.latex?1/m"> and <img src="https://latex.codecogs.com/png.latex?1/n"> for normalizing constants, but the spirit holds.</p>
+</section>
+</section>
+<section id="ramifications" class="level1">
+<h1>Ramifications</h1>
+<section id="compute-performance" class="level2">
+<h2 class="anchored" data-anchor-id="compute-performance">Compute Performance</h2>
+<p>The authors spend most of their attention not on measuring the differences between model based and memory based approaches (they do concede that model based approaches are more scalable in the long run) and more so on separating the neighborhood construction and the ratings estimation in offline and online batches, respectively.</p>
+<p>They authors recommend that instead of computing the full neighborhood, only the top <img src="https://latex.codecogs.com/png.latex?k"> most similar items are retained (stochastic gradient descent vibes). They call this parameter <img src="https://latex.codecogs.com/png.latex?k"> the <em>model size</em> or the <em>neighborhood size</em>.</p>
+<p>The authors cary out a number of experimental examples and show that</p>
+<ol type="1">
+<li><p>The memory based method outperforms the regression based method and demonstrate overfitting when the neighborhood size gets too large: <img src="dravesb.github.io/blog/blog_posts/sarwar_2001/neighborhood_size.jpg" class="img-fluid" alt="Figure: Comparing model performance. Figure 5 in Sarwar 2001"></p></li>
+<li><p>The algorithm only needs the most similar items in an item’s neighborhood to estimate ratings accurately. In the paper they state “… we were within 96% and 98.3% of the full item-item scheme’s accuracy using only 1.3% and 3.0% of the items, respectively!” <img src="dravesb.github.io/blog/blog_posts/sarwar_2001/model_size.jpg" class="img-fluid" alt="Figure: Effect of neighborhood size. Figure 7 in Sarwar 2001"></p></li>
+</ol>
+<p>These findings aren’t too surprising but do garner insights into ways to speed up this algorithm in online inference settings and again demonstrates bias-variance tradeoffs in offline model training.</p>
+</section>
+<section id="recommendation-performance" class="level2">
+<h2 class="anchored" data-anchor-id="recommendation-performance">Recommendation Performance</h2>
+<p>The paper mostly focused on assessing the algorithms performance with respect to MAE utilizing a train-test split. For collaborative filtering approaches, I also find this a bit concerning because severing the user-item bipartite graph impacts training of all collaborative filtering methods. Nonetheless, the authors carry out a classic training-testing split, and cross validate on the training set to tune the item-to-item collaborative filtering methods. Their key findings include</p>
+<ol type="1">
+<li>Adjusted-cosine similarity out performs other similarity methods</li>
+<li>After tuning, item-to-item give similar, if not preferable, results compared to user-to-user methods for certain combinations of data sparsity and neighborhood sizes.</li>
+</ol>
+<p>In aggregate, I think these results validate the performance of this method as a valid and interesting alternative to user-to-user collaborative filtering.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In conclusion, the paper introduces item-to-item collaborative filtering as a method that gives similar performance as user-to-user collaborative filtering with potential gains in performance by moving much of the heavy computation to offline batch frameworks. Moreover, by proposing modeling techniques that do not use the training data explicitly in the creation of the rating estimates (i.e.&nbsp;model based methods) these methods will continue to offer compute enhancements.</p>
+<p>I think this paper offers a nice introduction to a different view of collaborative filtering while stressing some of the practical limitations of neighborhood approaches in real-time systems. A few thoughts I have leaving the paper:</p>
+<ul>
+<li><p>This naturally begs the question of utilizing both user level and item level neighborhoods when performing localized-averaging for ratings estimation. Something along the lines of <img src="https://latex.codecogs.com/png.latex?%0A%5Chat%7BR%7D_%7Bus%7D%20=%20%5Cfrac%7B%5Csum_%7Bt%5Cin%20N(s)%7D%5Csum_%7Bv%5Cin%20N(u)%7D%5Ctext%7Bsim%7D(v,%20t)R_%7Bvt%7D%7D%7B%5Csum_%7Bt%5Cin%20N(s)%7D%5Csum_%7Bv%5Cin%20N(u)%7D%5Cmid%20%5Ctext%7Bsim%7D(v,%20t)%5Cmid%7D%0A"> which is starting to look very page-rank.</p></li>
+<li><p>None of these papers are utilizing user or item features at all. These similarity measures could easily utilize features on each item which would greatly improve the quality of these measures.</p></li>
+<li><p>Performing training-testing splits on graph data remain very difficult.</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>paper-notes</category>
+  <category>machine-learning</category>
+  <category>recommendation-systems</category>
+  <category>collaborative-filtering</category>
+  <guid>dravesb.github.io/blog/blog_posts/sarwar_2001/</guid>
+  <pubDate>Sun, 01 Dec 2024 05:00:00 GMT</pubDate>
+</item>
 <item>
   <title>GroupLens: An Open Architecture for Collaborative Filtering of Netnews</title>
   <dc:creator>Benjamin Draves</dc:creator>

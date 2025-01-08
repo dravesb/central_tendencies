@@ -3,10 +3,9 @@ Chp 12: Parallelizing NN Training with Torch
 
 - Creating and manipulating tensors 
 - Dataset, Dataloader, TensorDataset
-- Building a lightweight example [save this for chp 13?]
 
 Chp 13: Going Deeper - mechanics of PyTorch 
 
 - Computational Graphs and Auograd 
-- Modules: Torch.nn: nn.Sequenetial, nn.Module 
-- Custom Layers using nn.Module
+- Modules: Torch.nn: nn.Sequenetial, nn.Module, Custom Layers using nn.Module
+- Starter ANN Code for every application

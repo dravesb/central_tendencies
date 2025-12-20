@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>dravesb.github.io/about.html</loc>
-    <lastmod>2024-11-11T16:43:48.344Z</lastmod>
+    <lastmod>2025-12-20T19:09:05.849Z</lastmod>
   </url>
   <url>
     <loc>dravesb.github.io/blog/working_on/working_on_scroll.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>dravesb.github.io/index.html</loc>
-    <lastmod>2024-11-11T21:26:36.647Z</lastmod>
+    <lastmod>2025-12-20T18:59:36.512Z</lastmod>
   </url>
   <url>
     <loc>dravesb.github.io/blog/thinking_about/thinking_about_scroll.html</loc>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>dravesb.github.io/blog/blog.html</loc>
-    <lastmod>2024-12-01T22:07:31.245Z</lastmod>
+    <lastmod>2025-12-20T19:12:58.686Z</lastmod>
   </url>
   <url>
     <loc>dravesb.github.io/blog/reading/reading_posts/ml_with_pytorch_chp11/index.html</loc>
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>dravesb.github.io/blog/blog_posts/resnick_1994/index.html</loc>
-    <lastmod>2024-12-01T22:43:31.595Z</lastmod>
+    <lastmod>2024-12-23T15:36:03.378Z</lastmod>
   </url>
   <url>
     <loc>dravesb.github.io/code/example/example.html</loc>
@@ -59,5 +59,25 @@
   <url>
     <loc>dravesb.github.io/blog/blog_posts/sarwar_2001/index.html</loc>
     <lastmod>2024-12-02T00:38:57.110Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/notes/book-notes/rashka-2022/chp12.html</loc>
+    <lastmod>2025-01-05T21:46:02.082Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/notes/book-notes/rashka-2022/chp13.html</loc>
+    <lastmod>2025-01-03T00:14:01.474Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/notes/study_guides/rashka-2022/pytorch_basics.html</loc>
+    <lastmod>2025-01-05T22:47:35.190Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/notes/book-notes/isl-2023/chp2-lab/chp2.html</loc>
+    <lastmod>2025-12-20T14:27:51.335Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/notes/book-notes/rashka-2022/chp14.html</loc>
+    <lastmod>2025-01-09T04:31:37.712Z</lastmod>
   </url>
 </urlset>

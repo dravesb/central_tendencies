@@ -1,9 +1,8 @@
 ---
-title: "Welcome to Central Tendencies"
+title: "Central Tendencies"
 listing: 
     contents: blog_posts
-    sort: "date"
-    categories: true 
-    feed: true
-    type: table
+    sort: "date desc"
+    categories: false 
+    type: default
 ---

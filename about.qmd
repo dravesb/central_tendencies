@@ -3,7 +3,8 @@ title: "About Me"
 ---
 
 My name is Benjamin Draves and I'm a Staff Applied Scientist at Uber in NYC. 
-I work on building [ML systems](https://www.uber.com/blog/personalized-marketing-at-scale/?uclick_id=b3393989-abf6-452d-8aca-82b420fbb385) to grow Uber's consumer and earner businesses.
+I work on building ML systems to grow Uber's consumer and earner businesses.
+This includes [Recommendation Systems](https://www.uber.com/blog/personalized-marketing-at-scale/?uclick_id=b3393989-abf6-452d-8aca-82b420fbb385), Causal ML targeting system, and timing optimization systems.
 
 ![](images/me.jpeg){fig-align="center"}
 

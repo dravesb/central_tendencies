@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Benjamin Draves">
-<meta name="dcterms.date" content="2024-11-17">
-<meta name="description" content="Paper notes on original GroupLens paper introducing Collaborative Filtering for new article recommendation">
 
-<title>GroupLens: An Open Architecture for Collaborative Filtering of Netnews – Central Tendencies</title>
+<title>Chapter 12: Parallelizing Neural Network Training with PyTorch – Central Tendencies</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -72,35 +104,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
@@ -108,7 +111,7 @@ window.Quarto = {
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -164,46 +167,7 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">GroupLens: An Open Architecture for Collaborative Filtering of Netnews</h1>
-                  <div>
-        <div class="description">
-          Paper notes on original GroupLens paper introducing Collaborative Filtering for new article recommendation
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">paper-notes</div>
-                <div class="quarto-category">machine-learning</div>
-                <div class="quarto-category">recommendation-systems</div>
-                <div class="quarto-category">collaborative-filtering</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Benjamin Draves </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">November 17, 2024</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -211,100 +175,58 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#introduction-problem" id="toc-introduction-problem" class="nav-link" data-scroll-target="#introduction-problem">Introduction &amp; Problem</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
-  <ul class="collapse">
-  <li><a href="#collaborative-filtering" id="toc-collaborative-filtering" class="nav-link" data-scroll-target="#collaborative-filtering">Collaborative Filtering</a></li>
-  <li><a href="#collaborative-filtering---extensions" id="toc-collaborative-filtering---extensions" class="nav-link" data-scroll-target="#collaborative-filtering---extensions">Collaborative Filtering - Extensions</a></li>
-  </ul></li>
-  <li><a href="#ramifications" id="toc-ramifications" class="nav-link" data-scroll-target="#ramifications">Ramifications</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#sections" id="toc-sections" class="nav-link active" data-scroll-target="#sections">Sections:</a></li>
+  <li><a href="#training-performance-hardware-and-pytorch" id="toc-training-performance-hardware-and-pytorch" class="nav-link" data-scroll-target="#training-performance-hardware-and-pytorch">Training Performance, Hardware, and PyTorch</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-
-
-
-
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p>The <a href="http://dx.doi.org/10.1145/192844.192905"><em>GroupLens: An Open Architecture for Collaborative Filtering of Netnews</em></a> paper was one of the first papers to introduce collaborative filtering for recommendation applications in 1994. The paper focuses on not just the recommendation problem but also how those recommendations are integrated into the Usenet Netnews network, displayed to users, and implications for serving personalized news to users.</p>
-</section>
-<section id="introduction-problem" class="level1">
-<h1>Introduction &amp; Problem</h1>
-<p>Usenet’s netnews platform was an original social news aggregation network. Netnews created and shared bulletin boards where users could post news related to certain topics (see the figure below). This mimics many modern day social media platforms (most notably Reddit). While users could see and read news posted from other users, users noted that the “signal to noise” ratio was too low and had to rely on moderators and basic software (called news agents) to screen, remove, or boost certain news content.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="netnews_architecture.jpg" class="img-fluid figure-img"></p>
-<figcaption><em>Figure</em>: Netnews design and architecture. Figure 1 in Resnick et al.&nbsp;1994</figcaption>
-</figure>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Chapter 12: Parallelizing Neural Network Training with PyTorch</h1>
 </div>
-<p>While some of this was successful, most of these approaches were primitive and would not scale to many users and articles. GroupLens attempted to create a system (a news client) that would take into account user ratings to <em>collaboratively</em> filter our irrelevant news articles bases on the uses ratings of previous articles.<br>
-The stated goals of GroupLens was to</p>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sections" class="level3">
+<h3 class="anchored" data-anchor-id="sections">Sections:</h3>
 <ol type="1">
-<li>Openess - other devs could change the rating system to address their own objectives.</li>
-<li>Ease of use - users could supply ratings to news articles was non-invasive</li>
-<li>Compatibility - the news client was accessible to all Netnews users</li>
-<li>Scalability - the rating mechanism scaled to many users and many articles</li>
-<li>Privacy - ensure users ratings privacy were preserved</li>
+<li>Training Performance, Hardware, and PyTorch</li>
+<li>Tensors</li>
+<li>Dataset, TensorDataset, and DataLoader</li>
+<li>Building a Nueral Network with PyTorch</li>
+<li>Choice of Activation Functions</li>
 </ol>
 </section>
-<section id="methods" class="level1">
-<h1>Methods</h1>
-<p>The paper spend a good deal of time discussing the architecture of <em>how</em> article ratings will get passed from server to server to influence filtering of articles for new users (see Figure 2 for instance). The authors also spend time discussing the tradeoffs from building GroupLens on explicit ratings (e.g.&nbsp;user scores on each article from 1-5) versus implicit ratings (e.g.&nbsp;time spend reading each article). In modern applications, most recommendation systems focus on incorporating both explicit and implicit feedback but tend to focus on the later due to higher throughput and reliability of implicit feedback mechanisms (e.g.&nbsp;<a href="https://support.tiktok.com/en/using-tiktok/exploring-videos/how-tiktok-recommends-content">TikTok’s dwell time</a>).</p>
-<p>The authors ultimately decide to focus on explicit article ratings and treated the recommendation problem as a matrix completion problem.</p>
-<section id="collaborative-filtering" class="level2">
-<h2 class="anchored" data-anchor-id="collaborative-filtering">Collaborative Filtering</h2>
-<p>For each user <span class="math inline">\(u\in\mathcal{U}\)</span> and item <span class="math inline">\(v\in\mathcal{V}\)</span> we assign the rating <span class="math inline">\(u\)</span> assigns to <span class="math inline">\(v\)</span> as <span class="math inline">\(R_{uv}\)</span>. Supposing <span class="math inline">\(\mid\mathcal{U}\mid = n\)</span> and <span class="math inline">\(\mid\mathcal{V}\mid = m\)</span> the ratings matrix <span class="math inline">\(\mathbf{R}\in\mathbb{R}^{n\times m}\)</span> with</p>
-<p><span class="math display">\[
-\mathbf{R} = \begin{bmatrix}
-R_{11} &amp; \dots &amp; R_{1m}\\
-R_{21} &amp; \dots &amp; R_{2m}\\
-\vdots &amp; \ddots &amp; \vdots\\
-R_{n1} &amp; \dots &amp; R_{nm}
-\end{bmatrix}
-\]</span></p>
-<p>Now, several entries in <span class="math inline">\(\mathbf{R}\)</span> will be missing as not every (user, item) pair will be rated.</p>
-<p>The authors impute this missing scores based on the hueristic that “people who agreed in the past are likely to agree again.” To impute the missing rating <span class="math inline">\(R_{uv}\)</span> they follow:</p>
-<ol type="1">
-<li>Understand how similar user <span class="math inline">\(u\)</span> is to all other users.</li>
-<li>Score the item <span class="math inline">\(v\)</span> based on previous ratings of other users on <span class="math inline">\(v\)</span> <em>taking into account how similar the user is to <span class="math inline">\(u\)</span></em>.</li>
-</ol>
-<p>This manifests in the scoring equation <span class="math display">\[
-\hat{R}_{uv} = \bar{R_u} + \frac{\sum_{s\neq u} \text{sim}(u, s)(R_{iv} - \bar{R}_i)}{\sum_{s\neq u} |\text{sim}(u, s)|}
-\]</span></p>
-<p>Here, we first residualize all ratings relative to the user’s average rating. This removes any user-level bias or different interpretations of the rating scale. From here, we simply take a weighted sum of the ratings on item <span class="math inline">\(v\)</span> for each user, weighted by the similarity between the user providing that rating <span class="math inline">\(i\)</span> and user <span class="math inline">\(u\)</span>. The authors propose to model user-to-user similarity using simple correlation scores:</p>
-<p><span class="math display">\[
-\text{sim}(u, s) = \frac{\sum_{j=1}^m(R_{uj} - \bar{R}_{u})(R_{sj} - \bar{R}_{s})}{\sqrt{\sum_{j=1}^m(R_{uj} - \bar{R}_{u})^2}\sqrt{\sum_{j=1}^m(R_{sj} - \bar{R}_{s})^2}} \in [-1, 1]
-\]</span></p>
-<p>In both of these equations, if <span class="math inline">\(R_{uv}\)</span> is unobserved, then that term in the summand is removed. Therefore, if two users <span class="math inline">\((u, s)\)</span> do not score any of the same items, their similarity is set to zero and user <span class="math inline">\(s\)</span> ratings do not impact the rating estimates for user <span class="math inline">\(u\)</span>.</p>
-<p>This approach is typically referred to user-collaborative filtering (since we measure user-to-user similarity) in modern applications and similar approaches for item-collaborative filtering</p>
+<section id="training-performance-hardware-and-pytorch" class="level3">
+<h3 class="anchored" data-anchor-id="training-performance-hardware-and-pytorch">Training Performance, Hardware, and PyTorch</h3>
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;plaintext&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Tensors</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;plaintext&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Dataset, TensorDataset, and DataLoader</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;plaintext&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Training Performance, Hardware, and PyTorch</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="collaborative-filtering---extensions" class="level2">
-<h2 class="anchored" data-anchor-id="collaborative-filtering---extensions">Collaborative Filtering - Extensions</h2>
-<p>The authors point out a number of limitations with this approach which are approached with newer methodologies but crucially they discuss:</p>
-<ul>
-<li>This method does not utilize implicit feedback</li>
-<li>This method does not utilize features of the users or items</li>
-<li>Similarity scoring across all users will not scale</li>
-</ul>
-</section>
-</section>
-<section id="ramifications" class="level1">
-<h1>Ramifications</h1>
-<p>The paper discuss how they might surface the confidence they have in the scores produced by this algorithm. The authors recommend the scores can be used to remove low (estimated) rated articles or can show the estimated scores as part of the UI. They point how each of these approaches may bias data collection but leave it to the News group moderators on how they want to integrate these ratings to their Newgroup bulletin.</p>
-</section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
-<p>The paper spend a significant portion of time on the application (Netnews) and not the individual recommendation mechanism. This allows for moderators and users of this news client to understand what the recommendation collaborative filter is doing and how it can reliably add value over time. The authors even spend time understanding the social impact of fractured news ecosystems driven by recommendation engines. This quote is from their “Global Villages” section.</p>
-<blockquote class="blockquote">
-<p>Present newsgroups, like newspapers and local television shows before them, provide a shared history for their community of readers. With GroupLens, users may choose to read articles only from a small group with whom they share many common interests. Over time this could lead to a fracture of the global village into many small tribes, each forming a virtual community but nonetheless isolated from each other. Some kind of fracture is inevitable and even desirable, because no user can keep up with the overwhelming volume of news produced each day. The question is whether the subgroups will be closed or permeable.</p>
-</blockquote>
-<p>I think this paper does a great job of understanding the core application and developing a recommendation strategy for it instead of applying a recommendation strategy to a use case without thought. Perhaps that’s why it’s still relavent 30 years after publication.</p>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 
 
 </section>

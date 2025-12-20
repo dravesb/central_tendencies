@@ -130,5 +130,20 @@
   },
   "code/example/example.ipynb": {
     "example.html": "9a0d0266"
+  },
+  "notes/study_guides/rashka-2022/pytorch_basics.ipynb": {
+    "pytorch_basics.html": "c3ec7d58"
+  },
+  "notes/book-notes/isl-2023/chp2-lab/chp2.ipynb": {
+    "chp2.html": "3c38d902"
+  },
+  "notes/book-notes/rashka-2022/chp13.ipynb": {
+    "chp13.html": "56127b86"
+  },
+  "notes/book-notes/rashka-2022/chp14.ipynb": {
+    "chp14.html": "33f7b5bd"
+  },
+  "notes/book-notes/rashka-2022/chp12.ipynb": {
+    "chp12.html": "fb5e109a"
   }
 }

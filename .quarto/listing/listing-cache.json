@@ -1,23 +1,6 @@
 {
   "listingMap": {
-    "blog/reading/reading_scroll.qmd": [
-      "reading_posts"
-    ],
-    "blog/thinking_about/thinking_about_scroll.qmd": [
-      "thinking_about_posts"
-    ],
-    "blog/working_on/working_on_scroll.qmd": [
-      "working_on_posts"
-    ],
     "blog/blog.qmd": [
-      "reading_posts",
-      "blog_posts"
-    ],
-    "index.qmd": [
-      "blog_posts",
-      "blog/blog_posts"
-    ],
-    "blog.qmd": [
       "blog_posts"
     ]
   }

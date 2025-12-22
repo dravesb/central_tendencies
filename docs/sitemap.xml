@@ -1,66 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>dravesb.github.io/about.html</loc>
-    <lastmod>2025-12-20T19:09:05.849Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog/working_on/working_on_scroll.html</loc>
-    <lastmod>2024-08-18T22:25:58.124Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog/reading/reading_scroll.html</loc>
-    <lastmod>2024-11-11T16:00:45.337Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/index.html</loc>
-    <lastmod>2025-12-20T18:59:36.512Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog/thinking_about/thinking_about_scroll.html</loc>
-    <lastmod>2024-08-18T22:17:21.688Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog/blog.html</loc>
-    <lastmod>2025-12-20T19:12:58.686Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog/reading/reading_posts/ml_with_pytorch_chp11/index.html</loc>
-    <lastmod>2024-11-11T16:02:03.921Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog/blog_scroll.html</loc>
-    <lastmod>2024-11-11T16:16:27.476Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog.html</loc>
-    <lastmod>2024-11-11T16:38:05.105Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/about copy.html</loc>
-    <lastmod>2024-11-11T16:37:33.715Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog_posts/ml_with_pytorch_chp11/index.html</loc>
-    <lastmod>2024-11-11T16:23:04.562Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/code/resnick_1994/resnick_1994_demo.html</loc>
-    <lastmod>2024-11-24T00:20:25.756Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog/blog_posts/resnick_1994/index.html</loc>
-    <lastmod>2024-12-23T15:36:03.378Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/code/example/example.html</loc>
-    <lastmod>2024-11-30T21:36:18.583Z</lastmod>
-  </url>
-  <url>
-    <loc>dravesb.github.io/blog/blog_posts/sarwar_2001/index.html</loc>
-    <lastmod>2024-12-02T00:38:57.110Z</lastmod>
-  </url>
-  <url>
     <loc>dravesb.github.io/notes/book-notes/rashka-2022/chp12.html</loc>
     <lastmod>2025-01-05T21:46:02.082Z</lastmod>
   </url>
@@ -71,6 +11,34 @@
   <url>
     <loc>dravesb.github.io/notes/study_guides/rashka-2022/pytorch_basics.html</loc>
     <lastmod>2025-01-05T22:47:35.190Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/blog/blog.html</loc>
+    <lastmod>2025-12-20T19:12:58.686Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/blog/blog_posts/resnick_1994/index.html</loc>
+    <lastmod>2024-12-23T15:36:03.378Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/code/resnick_1994/resnick_1994_demo.html</loc>
+    <lastmod>2024-12-23T15:36:03.380Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/code/example/example.html</loc>
+    <lastmod>2024-12-23T15:36:03.379Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/index.html</loc>
+    <lastmod>2025-12-20T18:59:36.512Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/blog/blog_posts/sarwar_2001/index.html</loc>
+    <lastmod>2024-12-23T15:36:03.378Z</lastmod>
+  </url>
+  <url>
+    <loc>dravesb.github.io/about.html</loc>
+    <lastmod>2025-12-20T19:09:05.849Z</lastmod>
   </url>
   <url>
     <loc>dravesb.github.io/notes/book-notes/isl-2023/chp2-lab/chp2.html</loc>
